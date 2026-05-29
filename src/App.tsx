@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AppShell } from '@/components/layout/AppShell';
 import { HomePage } from '@/features/course/HomePage';
+import { CourseOverviewPage } from '@/features/course/CourseOverviewPage';
 import { ModulePage } from '@/features/course/ModulePage';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
@@ -11,14 +12,14 @@ import { AtlasProducts } from '@/features/atlas/AtlasProducts';
 import { AtlasCategories } from '@/features/atlas/AtlasCategories';
 import { AtlasHardware } from '@/features/atlas/AtlasHardware';
 import { AtlasOnDevice } from '@/features/atlas/AtlasOnDevice';
-import { course } from '@/content/course-ai';
 
 export default function App() {
   return (
     <AppShell>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/learn" element={<Navigate to={`/learn/${course.modules[0].slug}`} replace />} />
+        <Route path="/learn" element={<CourseOverviewPage />} />
+        <Route path="/courses/ai" element={<Navigate to="/learn" replace />} />
         <Route path="/learn/:slug" element={<ModulePage />} />
         <Route path="/atlas" element={<AtlasHome />} />
         <Route path="/atlas/companies" element={<AtlasCompanies />} />

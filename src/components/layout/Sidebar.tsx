@@ -49,7 +49,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         <img src="./favicon.svg" alt="" className="h-9 w-9 rounded-xl shadow-soft" />
         <div>
           <div className="text-lg font-black leading-none tracking-tight">Igloo</div>
-          <div className="text-[11px] text-muted">Learn all of AI</div>
+          <div className="text-[11px] text-muted">Learn anything, offline</div>
         </div>
       </div>
 
@@ -75,11 +75,23 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-muted hover:bg-surface-2 hover:text-text"
         >
           <BookOpen size={18} />
-          <span className="flex-1 text-left">The Course</span>
+          <span className="flex-1 text-left">AI Course</span>
           <ChevronDown size={16} className={cn('transition-transform', courseOpen && 'rotate-180')} />
         </button>
         {courseOpen && (
           <div className="ml-2 space-y-0.5 border-l border-border pl-2" onClick={() => onNavigate?.()}>
+            <NavLink
+              to="/learn"
+              end
+              className={({ isActive }) =>
+                cn(
+                  'flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] font-medium transition-colors',
+                  isActive ? 'bg-brand-500/10 text-brand-700 dark:text-brand-300' : 'text-muted hover:bg-surface-2 hover:text-text',
+                )
+              }
+            >
+              <Map size={14} className="opacity-0" /> Course overview
+            </NavLink>
             {perModule.map(({ module, complete }) => (
               <NavLink
                 key={module.id}

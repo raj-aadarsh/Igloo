@@ -1,67 +1,88 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, BookOpen, Map, Sparkles, WifiOff, Trophy, Library } from 'lucide-react';
-import { course } from '@/content/course-ai';
-import { companies } from '@/content/atlas/companies';
-import { models } from '@/content/atlas/models';
+import { ArrowRight, WifiOff, Trophy, Sparkles, Hand } from 'lucide-react';
+import { courses } from '@/content/courses';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { Icon } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/primitives';
+import { cn } from '@/lib/cn';
+
+const accentText: Record<string, string> = {
+  brand: 'text-brand-500',
+  accent: 'text-accent-500',
+  emerald: 'text-emerald-500',
+  violet: 'text-violet-500',
+  rose: 'text-rose-500',
+};
 
 export function HomePage() {
-  const { overallPct, totalDone, totalLessons, perModule } = useCourseProgress();
-  const nextModule = perModule.find((m) => !m.complete)?.module ?? course.modules[0];
+  const { overallPct, totalDone } = useCourseProgress();
 
   return (
     <div className="space-y-10">
-      {/* Hero */}
+      {/* Platform hero */}
       <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-brand-500/10 via-surface to-accent-500/10 p-8 sm:p-10">
-        <span className="chip mb-4"><Sparkles size={13} className="text-accent-500" /> Your complete map of AI</span>
-        <h1 className="max-w-2xl text-3xl font-black leading-tight tracking-tight sm:text-4xl">
-          Go from <span className="text-muted line-through decoration-2">“what’s an LLM?”</span> to explaining all of AI with confidence.
+        <div className="flex items-center gap-3">
+          <img src="./favicon.svg" alt="" className="h-12 w-12 rounded-2xl shadow-soft" />
+          <span className="chip"><Sparkles size={13} className="text-accent-500" /> Cozy, interactive, 100% offline</span>
+        </div>
+        <h1 className="mt-5 max-w-2xl text-3xl font-black leading-tight tracking-tight sm:text-4xl">
+          Welcome to <span className="text-brand-600 dark:text-brand-300">Igloo</span> — your warm little place to learn hard things.
         </h1>
         <p className="mt-3 max-w-xl text-muted">
-          A fun, interactive course plus a browsable atlas of every major company, model, and tool — built for a software engineer who wants the whole picture. Fully offline.
+          Interactive courses with playable demos and unlimited-attempt quizzes, that work entirely offline. We’re starting with a complete map of <strong>AI</strong> — more courses (on any topic) will join over time.
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link to={`/learn/${nextModule.slug}`}>
-            <Button size="lg">{totalDone > 0 ? 'Continue learning' : 'Start the course'} <ArrowRight size={18} /></Button>
-          </Link>
-          <Link to="/atlas/companies">
-            <Button size="lg" variant="outline"><Map size={18} /> Explore the Atlas</Button>
-          </Link>
-        </div>
-        {totalDone > 0 && (
-          <div className="mt-6 max-w-sm">
-            <div className="mb-1 flex justify-between text-xs text-muted"><span>{totalDone}/{totalLessons} lessons</span><span>{overallPct}%</span></div>
-            <div className="h-2 overflow-hidden rounded-full bg-border"><div className="h-full rounded-full bg-gradient-to-r from-brand-400 to-brand-600" style={{ width: `${overallPct}%` }} /></div>
-          </div>
-        )}
       </motion.section>
 
-      {/* Two pillars */}
-      <section className="grid gap-4 sm:grid-cols-2">
-        <Link to={`/learn/${course.modules[0].slug}`} className="card group p-6 transition-all hover:-translate-y-0.5 hover:shadow-glow">
-          <BookOpen className="text-brand-500" size={28} />
-          <h3 className="mt-3 text-lg font-bold">The Course</h3>
-          <p className="mt-1 text-sm text-muted">{course.modules.length} guided modules with interactive demos and quizzes — concepts, history, and the agentic stack (MCP, LangChain & more).</p>
-          <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 group-hover:gap-2 dark:text-brand-300">Start learning <ArrowRight size={16} /></span>
-        </Link>
-        <Link to="/atlas/companies" className="card group p-6 transition-all hover:-translate-y-0.5 hover:shadow-glow">
-          <Map className="text-accent-500" size={28} />
-          <h3 className="mt-3 text-lg font-bold">The AI Atlas</h3>
-          <p className="mt-1 text-sm text-muted">{companies.length}+ companies and {models.length}+ models, plus products, categories, hardware, and on-device LLMs. Searchable & filterable.</p>
-          <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent-600 group-hover:gap-2 dark:text-accent-400">Browse the atlas <ArrowRight size={16} /></span>
-        </Link>
+      {/* Course catalog */}
+      <section>
+        <div className="mb-4 flex items-baseline justify-between">
+          <h2 className="text-xl font-bold">Courses</h2>
+          <span className="text-xs text-muted">{courses.filter((c) => c.status === 'available').length} available</span>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {courses.map((c) => {
+            const isAvailable = c.status === 'available';
+            const card = (
+              <div className={cn('card group flex h-full flex-col p-6 transition-all', isAvailable ? 'hover:-translate-y-0.5 hover:shadow-glow' : 'border-dashed opacity-70')}>
+                <div className="flex items-center justify-between">
+                  <Icon name={c.icon} size={28} className={accentText[c.accent]} />
+                  {isAvailable ? (
+                    totalDone > 0 ? <span className="chip">{overallPct}% done</span> : <span className="chip">New</span>
+                  ) : (
+                    <span className="chip">Coming soon</span>
+                  )}
+                </div>
+                <h3 className="mt-3 text-lg font-bold">{c.title}</h3>
+                <p className="mt-1 flex-1 text-sm text-muted">{c.tagline}</p>
+                {isAvailable ? (
+                  <>
+                    <div className="mt-3 text-xs text-muted">{c.moduleCount} modules · {c.lessonCount} lessons{c.extras?.length ? ` · ${c.extras.map((e) => e.label).join(' · ')}` : ''}</div>
+                    <span className={cn('mt-3 inline-flex items-center gap-1 text-sm font-semibold group-hover:gap-2', accentText[c.accent])}>
+                      {totalDone > 0 ? 'Continue' : 'Open course'} <ArrowRight size={16} />
+                    </span>
+                  </>
+                ) : (
+                  <div className="mt-3 text-xs text-muted">Want a specific topic? This slot is intentionally open.</div>
+                )}
+              </div>
+            );
+            return isAvailable && c.overviewPath ? (
+              <Link key={c.id} to={c.overviewPath}>{card}</Link>
+            ) : (
+              <div key={c.id}>{card}</div>
+            );
+          })}
+        </div>
       </section>
 
-      {/* Feature chips */}
+      {/* Why Igloo */}
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
           { icon: WifiOff, label: '100% offline', sub: 'No internet needed' },
           { icon: Trophy, label: 'Unlimited quizzes', sub: 'No pressure' },
-          { icon: Library, label: 'Full glossary', sub: 'Every term' },
-          { icon: Sparkles, label: 'Interactive', sub: 'Learn by playing' },
+          { icon: Hand, label: 'Learn by playing', sub: 'Interactive demos' },
+          { icon: Sparkles, label: 'Clean & cozy', sub: 'Happy to use' },
         ].map((f) => (
           <div key={f.label} className="rounded-2xl border border-border bg-surface p-4 text-center">
             <f.icon className="mx-auto text-brand-500" size={22} />
@@ -69,27 +90,6 @@ export function HomePage() {
             <div className="text-xs text-muted">{f.sub}</div>
           </div>
         ))}
-      </section>
-
-      {/* Module grid */}
-      <section>
-        <h2 className="mb-4 text-xl font-bold">Course modules</h2>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {perModule.map(({ module, done, total, complete }) => (
-            <Link key={module.id} to={`/learn/${module.slug}`} className="card flex items-center gap-4 p-4 transition-all hover:-translate-y-0.5">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-300">
-                <Icon name={module.icon} />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="truncate font-semibold">{module.title}</div>
-                <div className="truncate text-xs text-muted">{module.subtitle}</div>
-              </div>
-              <div className="text-right text-xs">
-                <div className={complete ? 'font-bold text-emerald-500' : 'text-muted'}>{done}/{total}</div>
-              </div>
-            </Link>
-          ))}
-        </div>
       </section>
     </div>
   );

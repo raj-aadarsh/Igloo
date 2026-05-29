@@ -1,10 +1,9 @@
-# 🧊 Igloo — Learn All of AI
+# 🧊 Igloo — Learn Anything, Offline
 
-An interactive, **fully offline** website for learning everything about AI — from
-"what's an LLM?" to confidently explaining the whole field. Built for a software
-engineer who wants the complete map: concepts, history, the agentic stack (MCP,
-LangChain, LangGraph…), and a browsable atlas of every major company, model, and tool.
+A cozy, interactive, **fully offline** learning platform. Igloo hosts courses with
+playable demos and unlimited-attempt quizzes — all working with the network off.
 
+**Course #1 is a complete map of AI** (more courses, on any topic, will be added later).
 It has two pillars:
 
 1. **The Course** — *The Complete AI Map (Zero → Confident)*: 11 guided modules with
@@ -12,6 +11,10 @@ It has two pillars:
 2. **The AI Atlas** — a searchable/filterable encyclopedia of companies, models
    (Claude/Opus, GPT, Gemini, Llama, Grok, DeepSeek…), products (Perplexity, Cursor,
    Antigravity…), categories, hardware, and on-device/offline LLMs.
+
+> The platform is course-agnostic: courses live in a catalog
+> (`src/content/courses.ts`) and AI is just the first entry. See
+> *"Adding more content later"* below.
 
 > Content is a snapshot as of **early 2026**. Because the app runs offline it can't
 > auto-update, so each lesson/entry links out (free resources) to check the latest.
@@ -90,8 +93,13 @@ src/
   register it in `src/content/course-ai/index.ts`. Lessons are plain data ("blocks"),
   and you can drop in any interactive widget via a `{ type: 'widget', widget: '…' }` block.
 - **A new atlas entry:** just append to the arrays in `src/content/atlas/*.ts`.
-- **A whole new course:** the architecture treats a course as one manifest entry, so a
-  second self-made course can be added alongside the AI one.
+- **A whole new course (any topic):**
+  1. Author its content (a `Course` object) like `src/content/course-ai/`.
+  2. Register it in the catalog `src/content/courses.ts` (set `status: 'available'`
+     and an `overviewPath`).
+  3. Add its route(s) in `src/App.tsx`.
+  It will then appear automatically on the Igloo home catalog. A course can optionally
+  bring its own extras (the way the AI course brings the Atlas).
 
 ---
 
