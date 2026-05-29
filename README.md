@@ -102,4 +102,4 @@ npm run preview    # preview the production build locally
 
 ---
 
-*Want to know more about this project and the person behind it? Head to the **About** section inside the app — it's worth a quick read. 🙂*
+*Want to know more about this project and the person behind it? Head to the **About** section inside the app. 🙂*
