@@ -1,0 +1,112 @@
+import type { Module } from '@/content/types';
+
+export const m2: Module = {
+  id: 'm2',
+  slug: 'machine-learning',
+  order: 2,
+  title: 'Machine Learning Core',
+  subtitle: 'How machines actually “learn”',
+  icon: 'brain',
+  lessons: [
+    {
+      id: 'm2-l1',
+      title: 'The three styles of learning',
+      minutes: 6,
+      blocks: [
+        { type: 'p', text: 'Machine learning means: instead of writing rules, you show a model **examples** and it figures out the rules. There are three classic styles — switch between them below.' },
+        { type: 'widget', widget: 'ml-types' },
+        { type: 'keyterms', terms: [
+          { term: 'Features', def: 'The inputs/attributes you feed the model (e.g., square footage, location).' },
+          { term: 'Label', def: 'The “right answer” for an example in supervised learning (e.g., the house’s price).' },
+          { term: 'Dataset', def: 'The collection of examples used to train and test.' },
+          { term: 'RLHF', def: 'Reinforcement Learning from Human Feedback — how chatbots are tuned to be helpful and polite. (More in the LLM module.)' },
+        ] },
+      ],
+    },
+    {
+      id: 'm2-l2',
+      title: 'Training, loss & gradient descent',
+      minutes: 7,
+      blocks: [
+        { type: 'p', text: 'Training is just **trial and error at scale**. The model makes a guess, we measure how wrong it is (the **loss**), and we nudge its numbers to be a little less wrong. Repeat millions of times.' },
+        { type: 'h3', text: 'Gradient descent — the engine of learning' },
+        { type: 'p', text: 'Picture the loss as a hilly landscape; we want the lowest valley. **Gradient descent** rolls downhill by following the slope. The **learning rate** controls step size. Play with it — and try cranking it up until training *diverges*:' },
+        { type: 'widget', widget: 'gradient-descent' },
+        { type: 'callout', variant: 'key', text: '**Loss** = how wrong the model is. **Gradient descent** = the method that reduces it. **Learning rate** = how big each step is. Too small = slow; too big = it overshoots and blows up.' },
+      ],
+    },
+    {
+      id: 'm2-l3',
+      title: 'Overfitting, metrics & classic algorithms',
+      minutes: 7,
+      blocks: [
+        { type: 'h2', text: 'The #1 trap: overfitting' },
+        { type: 'p', text: '**Overfitting** is when a model memorizes the training data instead of learning the general pattern — it aces practice but fails the real test. **Underfitting** is the opposite: too simple to capture the pattern. We catch this by testing on data the model never saw (a **test set**).' },
+        { type: 'analogy', text: 'Overfitting is a student who memorizes last year’s exact exam answers, then panics when the questions change.' },
+        { type: 'h2', text: 'How we score models' },
+        { type: 'keyterms', title: 'Evaluation terms', terms: [
+          { term: 'Accuracy', def: 'Fraction of predictions that were correct. Misleading when classes are imbalanced.' },
+          { term: 'Precision', def: 'Of the things the model flagged positive, how many really were? (Avoids false alarms.)' },
+          { term: 'Recall', def: 'Of all the real positives, how many did the model catch? (Avoids misses.)' },
+          { term: 'F1 score', def: 'A balance of precision and recall in one number.' },
+        ] },
+        { type: 'h2', text: 'Classic algorithms worth knowing by name' },
+        { type: 'ul', items: [
+          '**Linear / Logistic Regression** — the simple, fast baselines (predict a number / a yes-no).',
+          '**Decision Trees & Random Forests** — flowchart-like rules; forests combine many trees.',
+          '**k-Nearest Neighbors (kNN)** — “you’re like your closest neighbors.”',
+          '**Support Vector Machines (SVM)** — draw the best dividing line between classes.',
+          '**Gradient Boosting (XGBoost)** — still a winner on spreadsheet-style (tabular) data.',
+        ] },
+        { type: 'callout', variant: 'tip', text: 'Not everything needs deep learning! For **tabular data** (rows and columns), boosted trees often beat neural networks and are cheaper.' },
+      ],
+    },
+  ],
+  quiz: [
+    {
+      id: 'm2-q1',
+      type: 'single',
+      prompt: 'You train a model with labeled spam/not-spam emails. Which style is this?',
+      options: ['Unsupervised learning', 'Supervised learning', 'Reinforcement learning', 'None'],
+      correct: [1],
+      explanation: 'Labeled inputs → supervised learning.',
+    },
+    {
+      id: 'm2-q2',
+      type: 'single',
+      prompt: 'What is “loss”?',
+      options: ['How fast the GPU runs', 'A measure of how wrong the model’s predictions are', 'The number of parameters', 'The dataset size'],
+      correct: [1],
+      explanation: 'Loss quantifies error; training tries to minimize it.',
+    },
+    {
+      id: 'm2-q3',
+      type: 'single',
+      prompt: 'A model scores 99% on training data but 60% on new data. This is…',
+      options: ['Underfitting', 'Overfitting', 'Perfect generalization', 'A learning-rate that’s too small'],
+      correct: [1],
+      explanation: 'Great on training, poor on unseen data = overfitting (memorizing, not generalizing).',
+    },
+    {
+      id: 'm2-q4',
+      type: 'single',
+      prompt: 'If a learning rate is far too high, what typically happens?',
+      options: ['Training is just slow', 'The model overshoots the minimum and can diverge', 'Nothing changes', 'Accuracy is guaranteed'],
+      correct: [1],
+      explanation: 'Too-large steps overshoot the valley and the loss can blow up — you saw this in the widget.',
+    },
+    {
+      id: 'm2-q5',
+      type: 'multi',
+      prompt: 'Which are classic ML algorithms (not deep learning)?',
+      options: ['Random Forest', 'Logistic Regression', 'Transformer', 'k-Nearest Neighbors'],
+      correct: [0, 1, 3],
+      explanation: 'Random Forest, Logistic Regression, and kNN are classic ML. The Transformer is a deep-learning architecture.',
+    },
+  ],
+  resources: [
+    { label: 'Google Machine Learning Crash Course (free)', url: 'https://developers.google.com/machine-learning/crash-course', kind: 'course', free: true },
+    { label: 'StatQuest with Josh Starmer (YouTube) — friendliest ML explainers', url: 'https://www.youtube.com/@statquest', kind: 'video', free: true },
+    { label: 'Try it: scikit-learn “getting started”', url: 'https://scikit-learn.org/stable/getting_started.html', kind: 'project', free: true },
+  ],
+};

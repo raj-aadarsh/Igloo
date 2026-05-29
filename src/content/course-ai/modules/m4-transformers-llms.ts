@@ -1,0 +1,115 @@
+import type { Module } from '@/content/types';
+
+export const m4: Module = {
+  id: 'm4',
+  slug: 'transformers-llms',
+  order: 4,
+  title: 'Transformers & LLMs',
+  subtitle: 'The tech behind ChatGPT & Claude',
+  icon: 'boxes',
+  lessons: [
+    {
+      id: 'm4-l1',
+      title: 'Tokens: how models read',
+      minutes: 6,
+      blocks: [
+        { type: 'p', text: 'LLMs don’t see words or letters — they see **tokens** (chunks of text). Type below and watch your sentence break apart:' },
+        { type: 'widget', widget: 'tokenizer' },
+        { type: 'callout', variant: 'key', text: 'Rule of thumb: **1 token ≈ 4 characters ≈ ¾ of a word.** You’re billed per token, and the **context window** (how much the model can “see” at once) is measured in tokens.' },
+      ],
+    },
+    {
+      id: 'm4-l2',
+      title: 'Attention & the Transformer',
+      minutes: 8,
+      blocks: [
+        { type: 'p', text: 'In 2017, the paper *“Attention Is All You Need”* introduced the **Transformer**. Its superpower is **self-attention**: every word can look at every other word to figure out meaning and context. Hover the words:' },
+        { type: 'widget', widget: 'attention' },
+        { type: 'h2', text: 'Inside a Transformer (the gentle version)' },
+        { type: 'widget', widget: 'transformer-anatomy' },
+        { type: 'p', text: 'An **LLM (Large Language Model)** is a giant Transformer trained on a huge chunk of the internet to do one simple thing: **predict the next token**. Do that well enough, at enough scale, and it can write, summarize, code, and reason.' },
+        { type: 'keyterms', terms: [
+          { term: 'Transformer', def: 'The neural-network architecture (2017) behind virtually all modern LLMs.' },
+          { term: 'Self-attention', def: 'Mechanism letting each token weigh the relevance of every other token.' },
+          { term: 'LLM', def: 'Large Language Model — a big Transformer that predicts the next token.' },
+          { term: 'Context window', def: 'The max tokens a model can consider at once (its short-term memory).' },
+        ] },
+      ],
+    },
+    {
+      id: 'm4-l3',
+      title: 'How an LLM is made (and tuned)',
+      minutes: 7,
+      blocks: [
+        { type: 'h2', text: 'Three stages' },
+        { type: 'ol', items: [
+          '**Pretraining** — read a massive slice of the internet, learning to predict the next token. Expensive (millions of dollars, thousands of GPUs). Produces a raw “base model.”',
+          '**Fine-tuning** — further training on curated examples so it follows instructions and behaves in a domain.',
+          '**RLHF (Reinforcement Learning from Human Feedback)** — humans rate responses; the model is tuned to prefer the helpful, honest, harmless ones. This is what turns a raw predictor into a polite assistant.',
+        ] },
+        { type: 'h2', text: 'Knobs you’ll actually use' },
+        { type: 'keyterms', terms: [
+          { term: 'Temperature', def: 'Randomness. Low = focused/repeatable; high = creative/varied.' },
+          { term: 'Top-p', def: 'Another way to control variety by limiting which next-tokens are considered.' },
+          { term: 'Parameters (7B/70B…)', def: 'Model size. Bigger often = smarter but slower and pricier.' },
+          { term: 'Multimodal', def: 'A model that handles more than text — images, audio, even video.' },
+        ] },
+        { type: 'callout', variant: 'warning', title: 'Hallucinations', text: 'LLMs predict *plausible* text, not *true* text. They can state false things confidently — that’s a **hallucination**. Always verify facts, especially names, numbers, and citations. (Techniques like RAG, next module, reduce this.)' },
+        { type: 'callout', variant: 'tip', text: 'Emergent abilities: past a certain scale, models suddenly get good at things they weren’t explicitly taught (basic arithmetic, translation). Surprising and still being studied.' },
+      ],
+    },
+  ],
+  quiz: [
+    {
+      id: 'm4-q1',
+      type: 'single',
+      prompt: 'What is the fundamental thing an LLM is trained to do?',
+      options: ['Search the web', 'Predict the next token', 'Store facts in a database', 'Render images'],
+      correct: [1],
+      explanation: 'At its core an LLM predicts the next token; everything else emerges from doing that well at scale.',
+    },
+    {
+      id: 'm4-q2',
+      type: 'single',
+      prompt: 'Roughly how many characters is one token?',
+      options: ['About 1', 'About 4', 'About 40', 'Exactly 1 word'],
+      correct: [1],
+      explanation: '~4 characters ≈ ¾ of a word is the common rule of thumb.',
+    },
+    {
+      id: 'm4-q3',
+      type: 'single',
+      prompt: 'Which mechanism is the Transformer’s key innovation?',
+      options: ['Convolution', 'Self-attention', 'Decision trees', 'k-means clustering'],
+      correct: [1],
+      explanation: 'Self-attention (from “Attention Is All You Need”, 2017) is the breakthrough.',
+    },
+    {
+      id: 'm4-q4',
+      type: 'single',
+      prompt: 'What does RLHF do?',
+      options: [
+        'Compresses the model',
+        'Tunes the model toward helpful/honest/harmless answers using human ratings',
+        'Adds images to the model',
+        'Increases the context window',
+      ],
+      correct: [1],
+      explanation: 'RLHF aligns the raw model with human preferences — the step that creates a usable assistant.',
+    },
+    {
+      id: 'm4-q5',
+      type: 'single',
+      prompt: 'A model confidently invents a fake citation. This is called…',
+      options: ['Overfitting', 'A hallucination', 'Backprop', 'Fine-tuning'],
+      correct: [1],
+      explanation: 'Confident but false output is a hallucination — a core LLM limitation.',
+    },
+  ],
+  resources: [
+    { label: '“Attention Is All You Need” — the original paper', url: 'https://arxiv.org/abs/1706.03762', kind: 'article', free: true },
+    { label: 'The Illustrated Transformer (Jay Alammar)', url: 'https://jalammar.github.io/illustrated-transformer/', kind: 'article', free: true },
+    { label: '3Blue1Brown: how LLMs work (visual)', url: 'https://www.youtube.com/watch?v=wjZofJX0v4M', kind: 'video', free: true },
+    { label: 'OpenAI Tokenizer — see real tokenization', url: 'https://platform.openai.com/tokenizer', kind: 'tool', free: true },
+  ],
+};
