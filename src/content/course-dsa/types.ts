@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // Content types for the DSA course. It is code-first: each sub-course (one per
 // data structure / topic) has "Learn" lessons (reusing the shared Block model)
-// and "Problems" you actually write + run in the in-browser Python playground.
+// and "Problems" you actually write + run in the in-browser Java playground.
 // ---------------------------------------------------------------------------
 import type { Block, Lesson } from '@/content/types';
 

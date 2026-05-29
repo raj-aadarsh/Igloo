@@ -1,7 +1,12 @@
 import type { Problem } from './types';
 
+const STARTER = `// Write a COMPLETE Java program from scratch.
+// It must be: public class Main { public static void main(String[] args) { ... } }
+// Read input from System.in (Scanner or BufferedReader); print with System.out.
+`;
+
 // Standalone "boss" problems for the Interview Arena. The Arena also pulls in
-// every problem flagged `isInterview` from the sub-courses; these are extra
+// every problem flagged \`isInterview\` from the sub-courses; these are extra
 // classics that don't belong to a single beginner topic.
 export const arenaExtraProblems: Problem[] = [
   {
@@ -20,7 +25,7 @@ export const arenaExtraProblems: Problem[] = [
     ],
     constraints: ['0 ≤ length ≤ 10^5', 'String may be empty.'],
     ioNote: 'Input: one line — the string (may be empty). Output: the length of the longest substring without repeats.',
-    starterCode: 'import sys\n\ns = sys.stdin.readline().rstrip("\\n")\n# Print the length of the longest substring without repeating characters.\n',
+    starterCode: STARTER,
     tests: [
       { stdin: 'abcabcbb', expected: '3' },
       { stdin: 'bbbbb', expected: '1' },
@@ -29,14 +34,35 @@ export const arenaExtraProblems: Problem[] = [
       { stdin: 'abba', expected: '2', hidden: true },
     ],
     hints: [
-      'Use a window [left, right]. Expand right; when you hit a repeat, shrink from the left.',
-      'Store each character’s last index in a dict so you can jump `left` forward instantly.',
+      'Read the line with a BufferedReader (handle an empty/null line as "").',
+      'Use a window [left, right]; store each char’s last index in a HashMap and jump left forward on a repeat.',
     ],
     solutions: [
       {
         label: 'Sliding window',
         bigO: 'Time O(n) · Space O(min(n, alphabet))',
-        code: 'import sys\n\ns = sys.stdin.readline().rstrip("\\n")\n\nlast = {}          # char -> last index seen\nleft = 0\nbest = 0\nfor right, c in enumerate(s):\n    if c in last and last[c] >= left:\n        left = last[c] + 1      # jump past the duplicate\n    last[c] = right\n    best = max(best, right - left + 1)\nprint(best)\n',
+        code: `import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String s = br.readLine();
+        if (s == null) s = "";
+
+        HashMap<Character, Integer> last = new HashMap<>();  // char -> last index
+        int left = 0, best = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (last.containsKey(c) && last.get(c) >= left) {
+                left = last.get(c) + 1;        // jump past the duplicate
+            }
+            last.put(c, i);
+            best = Math.max(best, i - left + 1);
+        }
+        System.out.println(best);
+    }
+}`,
         explanation: [
           { type: 'p', text: 'Grow a window to the right. The moment a character repeats *inside* the window, move `left` to just past its previous position. The window always holds a unique-character substring, so its widest size is the answer. One pass, **O(n)**.' },
         ],
@@ -58,7 +84,7 @@ export const arenaExtraProblems: Problem[] = [
     ],
     constraints: ['1 ≤ n ≤ 10^5', '0 ≤ height ≤ 10^4'],
     ioNote: 'Line 1: n. Line 2: n bar heights. Output: total trapped water.',
-    starterCode: 'import sys\n\n# Print the total trapped rain water.\n',
+    starterCode: STARTER,
     tests: [
       { stdin: '12\n0 1 0 2 1 0 1 3 2 1 2 1', expected: '6' },
       { stdin: '6\n4 2 0 3 2 5', expected: '9' },
@@ -67,13 +93,37 @@ export const arenaExtraProblems: Problem[] = [
     ],
     hints: [
       'Water above a bar = min(tallest to its left, tallest to its right) - its own height.',
-      'Two pointers from both ends, always moving the shorter side, lets you do it in O(1) space.',
+      'Two pointers from both ends, always moving the shorter side, does it in O(1) space.',
     ],
     solutions: [
       {
         label: 'Two pointers',
         bigO: 'Time O(n) · Space O(1)',
-        code: 'import sys\n\ndata = sys.stdin.read().split()\nn = int(data[0])\nh = list(map(int, data[1:1 + n]))\n\nleft, right = 0, n - 1\nleft_max = right_max = 0\nwater = 0\nwhile left < right:\n    if h[left] < h[right]:\n        left_max = max(left_max, h[left])\n        water += left_max - h[left]\n        left += 1\n    else:\n        right_max = max(right_max, h[right])\n        water += right_max - h[right]\n        right -= 1\nprint(water)\n',
+        code: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] h = new int[n];
+        for (int i = 0; i < n; i++) h[i] = sc.nextInt();
+
+        int left = 0, right = n - 1, leftMax = 0, rightMax = 0;
+        long water = 0;
+        while (left < right) {
+            if (h[left] < h[right]) {
+                leftMax = Math.max(leftMax, h[left]);
+                water += leftMax - h[left];
+                left++;
+            } else {
+                rightMax = Math.max(rightMax, h[right]);
+                water += rightMax - h[right];
+                right--;
+            }
+        }
+        System.out.println(water);
+    }
+}`,
         explanation: [
           { type: 'p', text: 'Move two pointers inward, always advancing the **shorter** side. Because that side is the bottleneck, the water over the current bar is decided by the running max on that side. Accumulate as you go — **O(n)** time, **O(1)** space.' },
         ],

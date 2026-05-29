@@ -34,7 +34,7 @@ export function DsaOverviewPage() {
         <span className="chip mb-4"><Icon name="cap" size={13} /> Course #2</span>
         <h1 className="max-w-2xl text-3xl font-black leading-tight tracking-tight sm:text-4xl">{dsaCourse.title}</h1>
         <p className="mt-3 max-w-xl text-muted">{dsaCourse.tagline}</p>
-        <p className="mt-2 text-sm text-muted">Learn the idea → learn the Python → then <strong className="text-text">write &amp; run real code</strong> right here. {badgesEarned > 0 && <>You’ve earned <strong className="text-text">{badgesEarned}</strong> badge{badgesEarned > 1 ? 's' : ''} so far.</>}</p>
+        <p className="mt-2 text-sm text-muted">Learn the idea → learn the Java → then <strong className="text-text">write &amp; run real code</strong> right here. {badgesEarned > 0 && <>You’ve earned <strong className="text-text">{badgesEarned}</strong> badge{badgesEarned > 1 ? 's' : ''} so far.</>}</p>
       </motion.section>
 
       {/* Interview Arena CTA */}

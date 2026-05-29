@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import { EditorView, keymap, lineNumbers, highlightActiveLine } from '@codemirror/view';
 import { EditorState } from '@codemirror/state';
 import { defaultKeymap, indentWithTab, history, historyKeymap } from '@codemirror/commands';
-import { python } from '@codemirror/lang-python';
+import { java } from '@codemirror/lang-java';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { useTheme } from '@/theme/ThemeProvider';
 
-// A focused CodeMirror 6 editor for Python. Read-only mode is used to render
+// A focused CodeMirror 6 editor for Java. Read-only mode is used to render
 // code snippets inside lessons; editable mode powers the playground.
 export function CodeEditor({
   value,
@@ -32,7 +32,7 @@ export function CodeEditor({
       history(),
       highlightActiveLine(),
       keymap.of([...defaultKeymap, ...historyKeymap, indentWithTab]),
-      python(),
+      java(),
       EditorView.theme({
         '&': { fontSize: '13.5px', borderRadius: '0.75rem', minHeight: `${minHeight}px` },
         '.cm-content': { fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', padding: '12px 0' },

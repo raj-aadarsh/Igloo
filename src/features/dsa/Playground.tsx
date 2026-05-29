@@ -1,24 +1,24 @@
 import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, RotateCcw, Check, X, Clock, Lightbulb, Eye, Loader2, PartyPopper } from 'lucide-react';
+import { Play, RotateCcw, Check, X, Clock, Lightbulb, Eye, Loader2, PartyPopper, WifiOff, AlertTriangle } from 'lucide-react';
 import type { Problem } from '@/content/course-dsa/types';
 import { CodeEditor } from '@/components/code/CodeEditor';
 import { LessonRenderer } from '@/features/course/LessonRenderer';
 import { Button, Pill } from '@/components/ui/primitives';
-import { usePyodideRunner } from './runner/usePyodideRunner';
-import type { TestOutcome } from './runner/runner';
+import { useJavaRunner } from './runner/useJavaRunner';
+import type { RunReport } from './runner/cheerpj';
 import { useProgress } from '@/features/progress/ProgressProvider';
 import { readJSON, writeJSON } from '@/lib/storage';
 import { cn } from '@/lib/cn';
 
 export function Playground({ problem }: { problem: Problem }) {
   const codeKey = `dsa-code:${problem.id}`;
-  const { status, run } = usePyodideRunner();
+  const { status, run } = useJavaRunner();
   const { isProblemSolved, markProblemSolved } = useProgress();
   const solved = isProblemSolved(problem.id);
 
   const [code, setCode] = useState<string>(() => readJSON<string>(codeKey, problem.starterCode));
-  const [results, setResults] = useState<TestOutcome[] | null>(null);
+  const [report, setReport] = useState<RunReport | null>(null);
   const [running, setRunning] = useState(false);
   const [revealHints, setRevealHints] = useState(0);
   const [showSolutions, setShowSolutions] = useState(false);
@@ -29,21 +29,20 @@ export function Playground({ problem }: { problem: Problem }) {
     writeJSON(codeKey, v);
   };
 
-  const passedCount = useMemo(() => results?.filter((r) => r.passed).length ?? 0, [results]);
-  const allPassed = results != null && results.length > 0 && passedCount === results.length;
+  const results = report?.results ?? [];
+  const passedCount = useMemo(() => results.filter((r) => r.passed).length, [results]);
+  const allPassed = results.length > 0 && passedCount === results.length;
 
   const handleRun = async () => {
     setRunning(true);
-    setResults(null);
+    setReport(null);
     try {
-      const out = await run(code, problem.tests);
-      setResults(out);
-      if (out.length > 0 && out.every((r) => r.passed)) {
-        if (!solved) {
-          markProblemSolved(problem.id);
-          setJustSolved(true);
-          setTimeout(() => setJustSolved(false), 4000);
-        }
+      const r = await run(code, problem.tests);
+      setReport(r);
+      if (r.results.length > 0 && r.results.every((x) => x.passed) && !solved) {
+        markProblemSolved(problem.id);
+        setJustSolved(true);
+        setTimeout(() => setJustSolved(false), 4000);
       }
     } finally {
       setRunning(false);
@@ -51,7 +50,6 @@ export function Playground({ problem }: { problem: Problem }) {
   };
 
   const resetCode = () => setAndPersistCode(problem.starterCode);
-
   const busy = running || status === 'loading';
 
   return (
@@ -59,60 +57,66 @@ export function Playground({ problem }: { problem: Problem }) {
       {/* Editor */}
       <div>
         <div className="mb-2 flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted">Your solution — Python</span>
+          <span className="text-xs font-semibold uppercase tracking-wide text-muted">Your solution — Java</span>
           <button onClick={resetCode} className="inline-flex items-center gap-1 text-xs text-muted hover:text-text">
             <RotateCcw size={13} /> Reset
           </button>
         </div>
-        <CodeEditor value={code} onChange={setAndPersistCode} minHeight={260} />
+        <CodeEditor value={code} onChange={setAndPersistCode} minHeight={280} />
       </div>
 
       {/* Run bar */}
       <div className="flex flex-wrap items-center gap-3">
         <Button onClick={handleRun} disabled={busy}>
           {busy ? <Loader2 size={16} className="animate-spin" /> : <Play size={16} />}
-          {status === 'loading' && running ? 'Warming up the engine…' : running ? 'Running…' : 'Run & check'}
+          {status === 'loading' && running ? 'Starting the Java engine…' : running ? 'Compiling & running…' : 'Run & check'}
         </Button>
-        {results && (
+        {report && results.length > 0 && (
           <span className={cn('text-sm font-semibold', allPassed ? 'text-emerald-500' : 'text-muted')}>
             {passedCount}/{results.length} tests passed
           </span>
         )}
         {solved && !justSolved && <Pill tone="green"><Check size={12} /> Solved</Pill>}
       </div>
-      {status === 'loading' && (
-        <p className="text-xs text-muted">First run loads the Python engine locally (a few seconds, once). After that it’s instant and works offline.</p>
+      {status === 'loading' && running && (
+        <p className="text-xs text-muted">First run downloads the Java engine (needs internet, just this once per session). After that it’s quick.</p>
+      )}
+
+      {/* Engine load error */}
+      {report?.loadError && (
+        <div className="flex items-center gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-900/20">
+          <WifiOff className="text-amber-500" size={20} />
+          <div className="text-sm text-amber-800 dark:text-amber-200"><strong>Couldn’t start the Java engine.</strong> {report.loadError}</div>
+        </div>
+      )}
+
+      {/* Compile error */}
+      {report?.compileError && (
+        <div className="rounded-2xl border border-rose-300 bg-rose-50 p-4 dark:border-rose-800 dark:bg-rose-900/20">
+          <div className="mb-1 flex items-center gap-2 font-bold text-rose-700 dark:text-rose-300"><AlertTriangle size={16} /> Compilation error</div>
+          <pre className="overflow-x-auto whitespace-pre-wrap text-xs text-rose-800 dark:text-rose-200">{report.compileError}</pre>
+          <p className="mt-2 text-xs text-muted">Tip: your class must be <code className="rounded bg-surface px-1">public class Main</code> with <code className="rounded bg-surface px-1">public static void main(String[] args)</code>.</p>
+        </div>
       )}
 
       {/* Celebration */}
       <AnimatePresence>
         {justSolved && (
-          <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0 }}
-            className="flex items-center gap-3 rounded-2xl border border-emerald-400 bg-emerald-50 p-4 dark:border-emerald-700 dark:bg-emerald-900/25"
-          >
+          <motion.div initial={{ opacity: 0, y: 8, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-3 rounded-2xl border border-emerald-400 bg-emerald-50 p-4 dark:border-emerald-700 dark:bg-emerald-900/25">
             <PartyPopper className="text-emerald-500" />
             <div>
               <div className="font-bold text-emerald-700 dark:text-emerald-300">Solved! All tests passed 🎉</div>
-              <div className="text-sm text-muted">Now check the optimal approach below — even if you already nailed it.</div>
+              <div className="text-sm text-muted">Now peek at the optimal approach below — even if you nailed it.</div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Results */}
-      {results && (
+      {/* Test results */}
+      {results.length > 0 && (
         <div className="space-y-2">
           {results.map((r, i) => (
-            <div
-              key={i}
-              className={cn(
-                'rounded-xl border p-3 text-sm',
-                r.passed ? 'border-emerald-300 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/15' : 'border-rose-300 bg-rose-50 dark:border-rose-800 dark:bg-rose-900/15',
-              )}
-            >
+            <div key={i} className={cn('rounded-xl border p-3 text-sm', r.passed ? 'border-emerald-300 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/15' : 'border-rose-300 bg-rose-50 dark:border-rose-800 dark:bg-rose-900/15')}>
               <div className="flex items-center gap-2 font-semibold">
                 {r.passed ? <Check size={15} className="text-emerald-500" /> : r.timedOut ? <Clock size={15} className="text-rose-500" /> : <X size={15} className="text-rose-500" />}
                 Test {i + 1} {r.hidden && <span className="text-xs font-normal text-muted">(hidden)</span>}
@@ -128,7 +132,7 @@ export function Playground({ problem }: { problem: Problem }) {
                 </div>
               )}
               {r.error && !r.hidden && (
-                <pre className="mt-2 overflow-x-auto rounded-lg bg-rose-100 p-2 text-xs text-rose-800 dark:bg-rose-950/50 dark:text-rose-200">{r.error.trim().split('\n').slice(-4).join('\n')}</pre>
+                <pre className="mt-2 overflow-x-auto rounded-lg bg-rose-100 p-2 text-xs text-rose-800 dark:bg-rose-950/50 dark:text-rose-200">{r.error.trim().split('\n').slice(-5).join('\n')}</pre>
               )}
             </div>
           ))}
