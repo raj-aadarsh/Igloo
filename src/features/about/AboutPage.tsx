@@ -1,6 +1,27 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Github, Sparkles, Hand, Trophy, Map, Snowflake } from 'lucide-react';
 import { Logo } from '@/components/ui/Logo';
+
+// Developer photo from /public/aadarsh.png, with a monogram fallback.
+function DevAvatar() {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br from-brand-500 to-accent-500 text-3xl font-black text-white shadow-glow">
+        AR
+      </div>
+    );
+  }
+  return (
+    <img
+      src="./aadarsh.png"
+      alt="Aadarsh Raj"
+      onError={() => setFailed(true)}
+      className="h-24 w-24 shrink-0 rounded-3xl object-cover shadow-glow ring-2 ring-brand-500/30"
+    />
+  );
+}
 
 function IglooBackdrop() {
   // A soft, decorative igloo + aurora scene that sits behind the hero.
@@ -85,9 +106,7 @@ export function AboutPage() {
         >
           <div className="pointer-events-none absolute -left-12 -bottom-12 h-44 w-44 rounded-full bg-accent-400/15 blur-3xl" />
           <div className="relative flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br from-brand-500 to-accent-500 text-3xl font-black text-white shadow-glow">
-              AR
-            </div>
+            <DevAvatar />
             <div className="flex-1">
               <h3 className="text-2xl font-black tracking-tight">Aadarsh Raj</h3>
               <p className="mt-0.5 text-sm font-semibold text-brand-600 dark:text-brand-300">Software Engineer &amp; creator of Igloo</p>

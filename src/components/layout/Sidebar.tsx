@@ -4,7 +4,6 @@ import {
   Home, BookOpen, Map, Library, GraduationCap, ChevronDown, CheckCircle2, Circle, X,
   Building2, Boxes, AppWindow, Layers, Cpu, Laptop, Heart,
 } from 'lucide-react';
-import { course } from '@/content/course-ai';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
@@ -137,9 +136,6 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         </div>
       </nav>
 
-      <div className="px-5 py-3 text-[11px] text-muted">
-        {course.modules.length} modules · works fully offline
-      </div>
     </div>
   );
 }
