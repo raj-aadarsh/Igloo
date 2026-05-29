@@ -2,7 +2,7 @@
 
 > *Warm up to hard ideas.*
 
-Igloo is an interactive learning platform with hands-on demos and pressure-free quizzes, designed so difficult topics actually feel enjoyable to learn. Everything works completely offline — no internet required after the first setup.
+Igloo is an interactive learning platform with hands-on demos and pressure-free practice, designed so difficult topics actually feel enjoyable to learn. Almost everything runs offline — the one exception is running Java in the DSA course (details below).
 
 ---
 
@@ -13,6 +13,26 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 | 01 | **The Complete AI Map** | Everything about AI — from the basics to LLMs, agents, MCP, and the full industry landscape. |
 | 02 | **DSA Dojo** | Data structures & algorithms, code-first: learn each topic, then write & run real Java in the built-in playground, ending with an Interview Arena. |
 | 03 | **Coming soon** | More courses on the way. |
+
+### 🥋 DSA Dojo (Course 02)
+
+A **code-first** course for cracking coding interviews. It's built in Java and runs real Java
+right in the browser. Each topic (a **sub-course**) follows the same addictive loop:
+
+1. **Learn the idea** — short, visual theory with the points interviewers actually probe.
+2. **Learn the Java** — the exact syntax you need (arrays, `ArrayList`, `Scanner`/`BufferedReader`
+   I/O, `StringBuilder`, common gotchas).
+3. **Solve problems** — write a complete program *from scratch* in the playground, hit
+   **Run & check**, and see it compiled and run against real test cases. Stuck? Reveal hints one
+   at a time; then study the worked **brute-force → optimal** solutions with Big-O.
+4. **Earn the badge**, then test yourself in the **Interview Arena** — the "boss" set of hard,
+   real interview questions.
+
+> **Heads-up:** the Java engine (CheerpJ) loads from its CDN, so clicking **Run & check** needs
+> an internet connection. Everything else — reading, the AI course — works offline.
+
+Topics live now: **Arrays** (more are being added: Strings, Hashing, Stacks, Linked Lists,
+Trees, Graphs, DP, and beyond).
 
 ---
 

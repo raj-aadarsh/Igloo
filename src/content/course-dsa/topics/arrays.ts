@@ -313,7 +313,7 @@ public class Main {
         { stdin: '4\n2 7 11 15\n9', expected: '0 1' },
         { stdin: '3\n3 2 4\n6', expected: '1 2' },
         { stdin: '2\n3 3\n6', expected: '0 1', hidden: true },
-        { stdin: '5\n1 5 3 7 2\n9', expected: '1 3', hidden: true },
+        { stdin: '5\n1 5 3 7 2\n9', expected: '3 4', hidden: true },
       ],
       hints: [
         'Brute force: two nested loops over every pair (i, j) — O(n²).',
