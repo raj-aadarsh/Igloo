@@ -11,10 +11,11 @@ import { binarySearch } from './topics/binary-search';
 import { sorting } from './topics/sorting';
 import { trees } from './topics/trees';
 import { heaps } from './topics/heaps';
+import { graphs } from './topics/graphs';
 import { arenaExtraProblems } from './arena';
 
 // Available sub-courses (more added over time). Keep them ordered.
-const subCourses: SubCourse[] = [arrays, strings, hashing, twoPointers, stacks, queues, linkedLists, recursion, binarySearch, sorting, trees, heaps].sort((a, b) => a.order - b.order);
+const subCourses: SubCourse[] = [arrays, strings, hashing, twoPointers, stacks, queues, linkedLists, recursion, binarySearch, sorting, trees, heaps, graphs].sort((a, b) => a.order - b.order);
 
 export const dsaCourse: DsaCourse = {
   id: 'course-dsa',
@@ -25,7 +26,6 @@ export const dsaCourse: DsaCourse = {
 
 // Topics we’ll add next — shown as "coming soon" on the overview so the path is clear.
 export const plannedTopics: { title: string; icon: string }[] = [
-  { title: 'Graphs', icon: 'network' },
   { title: 'Dynamic Programming', icon: 'boxes' },
   { title: 'Greedy', icon: 'sparkles' },
 ];
