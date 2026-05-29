@@ -12,6 +12,7 @@ import { AtlasProducts } from '@/features/atlas/AtlasProducts';
 import { AtlasCategories } from '@/features/atlas/AtlasCategories';
 import { AtlasHardware } from '@/features/atlas/AtlasHardware';
 import { AtlasOnDevice } from '@/features/atlas/AtlasOnDevice';
+import { AboutPage } from '@/features/about/AboutPage';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/atlas/on-device" element={<AtlasOnDevice />} />
         <Route path="/glossary" element={<GlossaryPage />} />
         <Route path="/exam" element={<ExamPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AppShell>

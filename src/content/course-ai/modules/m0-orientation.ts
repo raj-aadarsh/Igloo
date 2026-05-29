@@ -61,7 +61,7 @@ export const m0: Module = {
     },
   ],
   resources: [
-    { label: 'Elements of AI — a famous free intro course', url: 'https://www.elementsofai.com/', kind: 'course', free: true },
-    { label: 'Google’s “Introduction to Generative AI” (free)', url: 'https://www.cloudskillsboost.google/course_templates/536', kind: 'course', free: true },
+    { label: 'IBM: “What is artificial intelligence?” (clear explainer)', url: 'https://www.ibm.com/think/topics/artificial-intelligence', kind: 'article', free: true },
+    { label: 'MIT Technology Review: a plain-English guide to AI', url: 'https://www.technologyreview.com/2024/07/10/1094475/what-is-artificial-intelligence-ai-definitive-guide/', kind: 'article', free: true },
   ],
 };

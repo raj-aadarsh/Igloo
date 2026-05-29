@@ -97,8 +97,8 @@ export const m7: Module = {
     },
   ],
   resources: [
-    { label: 'Open the AI Atlas (in this app) for full company/model details', url: '#/atlas', kind: 'docs', free: true },
     { label: 'Stanford AI Index Report (free, data-rich)', url: 'https://aiindex.stanford.edu/report/', kind: 'article', free: true },
+    { label: 'State of AI Report — the annual industry deep-dive', url: 'https://www.stateof.ai/', kind: 'article', free: true },
     { label: 'LMArena — community leaderboard of top models', url: 'https://lmarena.ai/', kind: 'tool', free: true },
   ],
 };

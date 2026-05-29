@@ -2,11 +2,12 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Home, BookOpen, Map, Library, GraduationCap, ChevronDown, CheckCircle2, Circle, X,
-  Building2, Boxes, AppWindow, Layers, Cpu, Laptop,
+  Building2, Boxes, AppWindow, Layers, Cpu, Laptop, Heart,
 } from 'lucide-react';
 import { course } from '@/content/course-ai';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { Icon } from '@/components/ui/Icon';
+import { Logo } from '@/components/ui/Logo';
 import { cn } from '@/lib/cn';
 
 const atlasLinks = [
@@ -46,10 +47,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     <div className="flex h-full flex-col" onClick={() => onNavigate?.()}>
       {/* Brand */}
       <div className="flex items-center gap-2.5 px-5 py-5">
-        <img src="./favicon.svg" alt="" className="h-9 w-9 rounded-xl shadow-soft" />
+        <Logo className="h-9 w-9 rounded-xl shadow-soft" />
         <div>
           <div className="text-lg font-black leading-none tracking-tight">Igloo</div>
-          <div className="text-[11px] text-muted">Learn anything, offline</div>
+          <div className="text-[11px] text-muted">Warm up to hard ideas</div>
         </div>
       </div>
 
@@ -132,6 +133,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         <div onClick={() => onNavigate?.()}>
           <SectionLink to="/glossary" icon={Library}>Glossary</SectionLink>
           <SectionLink to="/exam" icon={GraduationCap}>Final Exam</SectionLink>
+          <SectionLink to="/about" icon={Heart}>About</SectionLink>
         </div>
       </nav>
 

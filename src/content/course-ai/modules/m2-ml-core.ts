@@ -105,7 +105,7 @@ export const m2: Module = {
     },
   ],
   resources: [
-    { label: 'Google Machine Learning Crash Course (free)', url: 'https://developers.google.com/machine-learning/crash-course', kind: 'course', free: true },
+    { label: 'MIT Sloan: “Machine learning, explained”', url: 'https://mitsloan.mit.edu/ideas-made-to-matter/machine-learning-explained', kind: 'article', free: true },
     { label: 'StatQuest with Josh Starmer (YouTube) — friendliest ML explainers', url: 'https://www.youtube.com/@statquest', kind: 'video', free: true },
     { label: 'Try it: scikit-learn “getting started”', url: 'https://scikit-learn.org/stable/getting_started.html', kind: 'project', free: true },
   ],

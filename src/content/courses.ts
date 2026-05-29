@@ -52,8 +52,8 @@ export const courses: CourseMeta[] = [
   //   add real courses (any topic) by following the steps in the header comment.
   {
     id: 'coming-soon',
-    title: 'Your next course',
-    tagline: 'More cozy, interactive courses are on the way — on any topic, not just AI.',
+    title: 'Our next course',
+    tagline: '',
     icon: 'cap',
     accent: 'accent',
     status: 'coming-soon',

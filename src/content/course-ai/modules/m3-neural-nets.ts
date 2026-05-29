@@ -91,6 +91,6 @@ export const m3: Module = {
   resources: [
     { label: '3Blue1Brown: “But what is a neural network?” (YouTube)', url: 'https://www.youtube.com/watch?v=aircAruvnKk', kind: 'video', free: true },
     { label: 'TensorFlow Playground — train a net in your browser', url: 'https://playground.tensorflow.org/', kind: 'project', free: true },
-    { label: 'fast.ai — free practical deep learning course', url: 'https://course.fast.ai/', kind: 'course', free: true },
+    { label: 'Michael Nielsen: “Neural Networks and Deep Learning” (free online book)', url: 'http://neuralnetworksanddeeplearning.com/', kind: 'article', free: true },
   ],
 };

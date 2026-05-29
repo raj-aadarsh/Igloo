@@ -36,9 +36,9 @@ export const m10: Module = {
       blocks: [
         { type: 'p', text: 'A curated shortlist to go deeper. Bookmark these — they’re the genuinely good, free ones.' },
         { type: 'ul', items: [
-          '**3Blue1Brown** & **StatQuest** (YouTube) — the best visual intuition for the math.',
-          '**fast.ai** & **Google ML Crash Course** — free, hands-on courses.',
-          '**Hugging Face Learn** — free LLM, agents, and deep-RL courses.',
+          '**3Blue1Brown** & **StatQuest** (YouTube) — the clearest visual intuition for the math.',
+          '**Distill.pub** & **The Illustrated Transformer** — gorgeous, deep explainer articles.',
+          '**The Batch** (DeepLearning.AI) & **Import AI** — short reads to stay current weekly.',
           '**Anthropic / OpenAI docs & cookbooks** — to actually build things.',
           '**Stanford AI Index** & **LMArena** — to track the state of the field.',
         ] },
@@ -70,8 +70,8 @@ export const m10: Module = {
     },
   ],
   resources: [
-    { label: 'Take the Final Exam (in this app)', url: '#/exam', kind: 'course', free: true },
-    { label: 'Hugging Face Learn — free courses', url: 'https://huggingface.co/learn', kind: 'course', free: true },
-    { label: 'Browse the AI Atlas (in this app)', url: '#/atlas', kind: 'docs', free: true },
+    { label: 'Distill.pub — beautifully explained ML research', url: 'https://distill.pub/', kind: 'article', free: true },
+    { label: 'The Batch (DeepLearning.AI) — weekly AI news & analysis', url: 'https://www.deeplearning.ai/the-batch/', kind: 'article', free: true },
+    { label: 'Import AI — a sharp weekly AI newsletter', url: 'https://importai.substack.com/', kind: 'article', free: true },
   ],
 };
