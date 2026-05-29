@@ -12,8 +12,9 @@ const CONFIG = {
   loaderUrl: 'https://cjrtnc.leaningtech.com/3.0/cj3loader.js',
   // Where compiled .class files are written (CheerpJ's persistent, writable mount).
   outDir: '/files/',
-  // Classpath used both to run javac and to run the compiled program.
-  classpath: '/files/',
+  // Classpath for both javac and the program. CheerpJ maps /app/ to the site root,
+  // where we serve a Java 8 tools.jar (which contains the javac compiler).
+  classpath: '/app/tools.jar:/files/',
   // Per-test wall-clock budget. CheerpJ runs cooperatively; a true infinite loop
   // can still hang the tab, but most slow/looping solutions resolve via this.
   timeoutMs: 10000,
@@ -40,9 +41,12 @@ declare global {
   interface Window {
     cheerpjInit?: (opts?: Record<string, unknown>) => Promise<unknown>;
     cheerpjRunMain?: (cls: string, classPath: string, ...args: string[]) => Promise<number>;
-    cheerpOSAddStringFile?: (path: string, data: string) => void;
+    // Writes a file into CheerpJ's /str/ virtual mount. Expects bytes.
+    cheerpjAddStringFile?: (path: string, data: Uint8Array) => void;
   }
 }
+
+const textEncoder = new TextEncoder();
 
 export type JavaRunnerStatus = 'idle' | 'loading' | 'ready' | 'error';
 
@@ -126,7 +130,7 @@ class JavaRunner {
   }
 
   private writeFile(path: string, data: string) {
-    window.cheerpOSAddStringFile?.(path, data);
+    window.cheerpjAddStringFile?.(path, textEncoder.encode(data));
   }
 
   /** Run a Java main, capturing console output (CheerpJ routes System.out→console.log). */
