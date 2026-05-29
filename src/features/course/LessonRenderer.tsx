@@ -2,6 +2,7 @@ import type { Block } from '@/content/types';
 import { RichText } from '@/components/ui/RichText';
 import { Callout } from '@/components/ui/Callout';
 import { Widget } from '@/components/interactive/registry';
+import { CodeEditor } from '@/components/code/CodeEditor';
 import { KeyRound } from 'lucide-react';
 
 export function LessonRenderer({ blocks }: { blocks: Block[] }) {
@@ -68,6 +69,13 @@ export function LessonRenderer({ blocks }: { blocks: Block[] }) {
             );
           case 'widget':
             return <Widget key={i} name={b.widget} />;
+          case 'code':
+            return (
+              <figure key={i} className="my-5">
+                <CodeEditor value={b.code} readOnly minHeight={0} />
+                {b.caption && <figcaption className="mt-1.5 text-xs text-muted">{b.caption}</figcaption>}
+              </figure>
+            );
           default:
             return null;
         }

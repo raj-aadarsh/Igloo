@@ -9,6 +9,7 @@
 // Each course can optionally bring its own extras (like the AI course's Atlas).
 // ---------------------------------------------------------------------------
 import { course as aiCourse, totalLessons as aiLessons } from './course-ai';
+import { dsaCourse, totalProblems as dsaProblems, totalSubCourses } from './course-dsa';
 
 export interface CourseExtra {
   label: string;
@@ -48,13 +49,25 @@ export const courses: CourseMeta[] = [
       { label: 'Final Exam', to: '/exam' },
     ],
   },
-  // ↓ Placeholder slots — these signal Igloo is a general platform. Replace or
-  //   add real courses (any topic) by following the steps in the header comment.
+  {
+    id: dsaCourse.id,
+    title: dsaCourse.title,
+    tagline: dsaCourse.tagline,
+    icon: 'cap',
+    accent: 'emerald',
+    status: 'available',
+    overviewPath: '/dsa',
+    moduleCount: totalSubCourses,
+    lessonCount: dsaProblems,
+    extras: [{ label: 'Interview Arena', to: '/dsa/arena' }],
+  },
+  // ↓ Placeholder slot — signals Igloo is a general platform. Add real courses
+  //   (any topic) by following the steps in the header comment.
   {
     id: 'coming-soon',
     title: 'Our next course',
     tagline: '',
-    icon: 'cap',
+    icon: 'sparkles',
     accent: 'accent',
     status: 'coming-soon',
     moduleCount: 0,

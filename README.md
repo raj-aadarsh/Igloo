@@ -11,7 +11,8 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 | # | Course | What you'll learn |
 |---|--------|-------------------|
 | 01 | **The Complete AI Map** | Everything about AI — from the basics to LLMs, agents, MCP, and the full industry landscape. |
-| 02 | **Coming soon** | More courses on the way. |
+| 02 | **DSA Dojo** | Data structures & algorithms, code-first: learn each topic, then write & run real Python in the built-in playground, ending with an Interview Arena. |
+| 03 | **Coming soon** | More courses on the way. |
 
 ---
 
@@ -21,7 +22,10 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 - **Tailwind CSS** — clean, responsive styling
 - **Framer Motion** — smooth animations
 - **React Router** — client-side navigation
-- **localStorage** — progress and quiz scores (no backend, no login)
+- **CodeMirror + Pyodide** — the DSA playground runs real Python entirely in your browser, offline (Pyodide is vendored locally on `npm install`)
+- **localStorage** — progress, quiz scores, solved problems (no backend, no login)
+
+> The DSA coding playground's first run loads the local Python engine (a few seconds, once); after that it's instant and works offline.
 
 ---
 

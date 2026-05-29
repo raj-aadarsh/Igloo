@@ -9,6 +9,7 @@ export interface QuizScore {
 interface ProgressState {
   completedLessons: Record<string, true>;
   quizScores: Record<string, QuizScore>;
+  solvedProblems: Record<string, true>;
 }
 
 interface ProgressCtx extends ProgressState {
@@ -16,16 +17,21 @@ interface ProgressCtx extends ProgressState {
   isLessonDone: (id: string) => boolean;
   setQuizScore: (id: string, correct: number, total: number) => void;
   getQuizScore: (id: string) => QuizScore | undefined;
+  markProblemSolved: (id: string) => void;
+  isProblemSolved: (id: string) => boolean;
   resetAll: () => void;
 }
+
+const EMPTY: ProgressState = { completedLessons: {}, quizScores: {}, solvedProblems: {} };
 
 const KEY = 'progress';
 const Ctx = createContext<ProgressCtx | null>(null);
 
 export function ProgressProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<ProgressState>(() =>
-    readJSON<ProgressState>(KEY, { completedLessons: {}, quizScores: {} }),
-  );
+  const [state, setState] = useState<ProgressState>(() => ({
+    ...EMPTY,
+    ...readJSON<ProgressState>(KEY, EMPTY),
+  }));
 
   const persist = useCallback((next: ProgressState) => {
     setState(next);
@@ -57,9 +63,18 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const markProblemSolved = useCallback((id: string) => {
+    setState((prev) => {
+      if (prev.solvedProblems[id]) return prev;
+      const next = { ...prev, solvedProblems: { ...prev.solvedProblems, [id]: true as const } };
+      writeJSON(KEY, next);
+      return next;
+    });
+  }, []);
+
   const resetAll = useCallback(() => {
     removeKey(KEY);
-    persist({ completedLessons: {}, quizScores: {} });
+    persist({ ...EMPTY });
   }, [persist]);
 
   const value = useMemo<ProgressCtx>(
@@ -69,9 +84,11 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       isLessonDone: (id: string) => Boolean(state.completedLessons[id]),
       setQuizScore,
       getQuizScore: (id: string) => state.quizScores[id],
+      markProblemSolved,
+      isProblemSolved: (id: string) => Boolean(state.solvedProblems[id]),
       resetAll,
     }),
-    [state, markLesson, setQuizScore, resetAll],
+    [state, markLesson, setQuizScore, markProblemSolved, resetAll],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

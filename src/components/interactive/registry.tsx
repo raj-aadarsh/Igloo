@@ -9,6 +9,10 @@ import { EmbeddingSpace } from './EmbeddingSpace';
 import { FlowRag, FlowAgent, FlowMcp } from './FlowDiagram';
 import { MLTypes } from './MLTypes';
 import { TransformerAnatomy } from './TransformerAnatomy';
+import { ArrayViz } from './dsa/ArrayViz';
+import { SlidingWindowViz } from './dsa/SlidingWindowViz';
+import { StackViz } from './dsa/StackViz';
+import { BigOCheat } from './dsa/BigOCheat';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -23,6 +27,10 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'flow-mcp': FlowMcp,
   'ml-types': MLTypes,
   'transformer-anatomy': TransformerAnatomy,
+  'array-viz': ArrayViz,
+  'sliding-window': SlidingWindowViz,
+  'stack-viz': StackViz,
+  'bigo-cheat': BigOCheat,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

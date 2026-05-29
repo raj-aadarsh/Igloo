@@ -32,3 +32,6 @@ pnpm-debug.log*
 
 # Vite cache
 .vite/
+
+# Pyodide runtime — vendored locally on `npm install` (postinstall), not committed
+public/pyodide/

@@ -16,7 +16,12 @@ export type WidgetKey =
   | 'flow-agent'
   | 'flow-mcp'
   | 'ml-types'
-  | 'transformer-anatomy';
+  | 'transformer-anatomy'
+  // DSA course widgets
+  | 'array-viz'
+  | 'sliding-window'
+  | 'stack-viz'
+  | 'bigo-cheat';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
@@ -34,7 +39,8 @@ export type Block =
   | { type: 'callout'; variant: CalloutVariant; title?: string; text: string }
   | { type: 'keyterms'; title?: string; terms: KeyTerm[] }
   | { type: 'widget'; widget: WidgetKey }
-  | { type: 'analogy'; text: string };
+  | { type: 'analogy'; text: string }
+  | { type: 'code'; code: string; caption?: string };
 
 export interface Resource {
   label: string;

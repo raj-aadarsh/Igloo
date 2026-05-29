@@ -2,12 +2,20 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Trophy, Sparkles, Hand, Wand2 } from 'lucide-react';
 import { courses } from '@/content/courses';
-import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
 
+// Per-accent styling so each featured course can have its own colour while
+// sharing the same classy "standout" treatment.
+const accentMap: Record<string, { grad: string; border: string; ring: string; tile: string; eyebrow: string; btn: string; blob: string }> = {
+  brand: { grad: 'from-brand-500/15 via-surface to-accent-500/10', border: 'border-brand-400/40', ring: 'ring-brand-500/15', tile: 'bg-brand-500/15 text-brand-600 ring-brand-500/20 dark:text-brand-300', eyebrow: 'text-brand-600 dark:text-brand-300', btn: 'bg-brand-600 group-hover:bg-brand-500', blob: 'bg-brand-400/20' },
+  emerald: { grad: 'from-emerald-500/15 via-surface to-brand-500/10', border: 'border-emerald-400/40', ring: 'ring-emerald-500/15', tile: 'bg-emerald-500/15 text-emerald-600 ring-emerald-500/20 dark:text-emerald-300', eyebrow: 'text-emerald-600 dark:text-emerald-300', btn: 'bg-emerald-600 group-hover:bg-emerald-500', blob: 'bg-emerald-400/20' },
+  accent: { grad: 'from-accent-500/15 via-surface to-rose-500/10', border: 'border-accent-400/40', ring: 'ring-accent-500/15', tile: 'bg-accent-500/15 text-accent-600 ring-accent-500/20 dark:text-accent-300', eyebrow: 'text-accent-600 dark:text-accent-300', btn: 'bg-accent-600 group-hover:bg-accent-500', blob: 'bg-accent-400/20' },
+  violet: { grad: 'from-violet-500/15 via-surface to-brand-500/10', border: 'border-violet-400/40', ring: 'ring-violet-500/15', tile: 'bg-violet-500/15 text-violet-600 ring-violet-500/20 dark:text-violet-300', eyebrow: 'text-violet-600 dark:text-violet-300', btn: 'bg-violet-600 group-hover:bg-violet-500', blob: 'bg-violet-400/20' },
+  rose: { grad: 'from-rose-500/15 via-surface to-accent-500/10', border: 'border-rose-400/40', ring: 'ring-rose-500/15', tile: 'bg-rose-500/15 text-rose-600 ring-rose-500/20 dark:text-rose-300', eyebrow: 'text-rose-600 dark:text-rose-300', btn: 'bg-rose-600 group-hover:bg-rose-500', blob: 'bg-rose-400/20' },
+};
+
 export function HomePage() {
-  const { overallPct, totalDone } = useCourseProgress();
   const available = courses.filter((c) => c.status === 'available');
   const upcoming = courses.filter((c) => c.status !== 'available');
 
@@ -23,7 +31,7 @@ export function HomePage() {
           Welcome to <span className="text-brand-600 dark:text-brand-300">Igloo</span> — your warm little place to learn hard things.
         </h1>
         <p className="mt-3 max-w-xl text-muted">
-          Hands-on courses with playable demos and pressure-free quizzes, designed so a tricky topic actually feels fun to learn.
+          Hands-on courses with playable demos and pressure-free practice, designed so a tricky topic actually feels fun to learn.
         </p>
       </motion.section>
 
@@ -34,37 +42,37 @@ export function HomePage() {
           <span className="text-xs text-muted">{available.length} available</span>
         </div>
 
-        {/* Featured / available course — made to stand out */}
         <div className="space-y-4">
-          {available.map((c) => (
-            <Link key={c.id} to={c.overviewPath ?? '/'} className="group block">
-              <motion.div
-                whileHover={{ y: -3 }}
-                className="relative overflow-hidden rounded-3xl border border-brand-400/40 bg-gradient-to-br from-brand-500/15 via-surface to-accent-500/10 p-6 shadow-soft ring-1 ring-brand-500/15 transition-shadow group-hover:shadow-glow sm:p-7"
-              >
-                {/* subtle glow blob */}
-                <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-400/20 blur-3xl" />
-                <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center">
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-brand-500/15 text-brand-600 ring-1 ring-brand-500/20 dark:text-brand-300">
-                    <Icon name={c.icon} size={30} />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="mb-1 flex items-center gap-2">
-                      <span className="text-[11px] font-bold uppercase tracking-widest text-brand-600 dark:text-brand-300">Course 01</span>
-                      <span className="chip">{totalDone > 0 ? `${overallPct}% complete` : 'New'}</span>
+          {available.map((c, i) => {
+            const a = accentMap[c.accent] ?? accentMap.brand;
+            return (
+              <Link key={c.id} to={c.overviewPath ?? '/'} className="group block">
+                <motion.div
+                  whileHover={{ y: -3 }}
+                  className={`relative overflow-hidden rounded-3xl border ${a.border} bg-gradient-to-br ${a.grad} p-6 shadow-soft ring-1 ${a.ring} transition-shadow group-hover:shadow-glow sm:p-7`}
+                >
+                  <div className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full ${a.blob} blur-3xl`} />
+                  <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center">
+                    <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl ring-1 ${a.tile}`}>
+                      <Icon name={c.icon} size={30} />
                     </div>
-                    <h3 className="text-2xl font-black tracking-tight">{c.title}</h3>
-                    <p className="mt-1 text-sm text-muted">{c.tagline}</p>
+                    <div className="min-w-0 flex-1">
+                      <div className="mb-1 flex items-center gap-2">
+                        <span className={`text-[11px] font-bold uppercase tracking-widest ${a.eyebrow}`}>Course {String(i + 1).padStart(2, '0')}</span>
+                      </div>
+                      <h3 className="text-2xl font-black tracking-tight">{c.title}</h3>
+                      <p className="mt-1 text-sm text-muted">{c.tagline}</p>
+                    </div>
+                    <div className="shrink-0 self-end sm:self-center">
+                      <span className={`flex h-11 w-11 items-center justify-center rounded-full text-white shadow-soft transition-all group-hover:translate-x-1 ${a.btn}`}>
+                        <ArrowRight size={20} />
+                      </span>
+                    </div>
                   </div>
-                  <div className="shrink-0 self-end sm:self-center">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-600 text-white shadow-soft transition-all group-hover:translate-x-1 group-hover:bg-brand-500">
-                      <ArrowRight size={20} />
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+                </motion.div>
+              </Link>
+            );
+          })}
 
           {/* Upcoming — quiet, minimal */}
           {upcoming.map((c) => (
@@ -84,8 +92,8 @@ export function HomePage() {
       {/* Why Igloo */}
       <section className="grid grid-cols-3 gap-3">
         {[
-          { icon: Trophy, label: 'Unlimited quizzes', sub: 'No pressure' },
-          { icon: Hand, label: 'Learn by playing', sub: 'Interactive demos' },
+          { icon: Trophy, label: 'Pressure-free', sub: 'Unlimited tries' },
+          { icon: Hand, label: 'Learn by doing', sub: 'Play & code' },
           { icon: Wand2, label: 'Clean & cozy', sub: 'A joy to use' },
         ].map((f) => (
           <div key={f.label} className="rounded-2xl border border-border bg-surface p-4 text-center">

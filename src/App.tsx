@@ -13,6 +13,10 @@ import { AtlasCategories } from '@/features/atlas/AtlasCategories';
 import { AtlasHardware } from '@/features/atlas/AtlasHardware';
 import { AtlasOnDevice } from '@/features/atlas/AtlasOnDevice';
 import { AboutPage } from '@/features/about/AboutPage';
+import { DsaOverviewPage } from '@/features/dsa/DsaOverviewPage';
+import { SubCoursePage } from '@/features/dsa/SubCoursePage';
+import { ProblemPage } from '@/features/dsa/ProblemPage';
+import { ArenaPage } from '@/features/dsa/ArenaPage';
 
 export default function App() {
   return (
@@ -31,6 +35,11 @@ export default function App() {
         <Route path="/atlas/on-device" element={<AtlasOnDevice />} />
         <Route path="/glossary" element={<GlossaryPage />} />
         <Route path="/exam" element={<ExamPage />} />
+        {/* DSA course */}
+        <Route path="/dsa" element={<DsaOverviewPage />} />
+        <Route path="/dsa/arena" element={<ArenaPage />} />
+        <Route path="/dsa/:topic" element={<SubCoursePage />} />
+        <Route path="/dsa/:topic/problem/:problemId" element={<ProblemPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

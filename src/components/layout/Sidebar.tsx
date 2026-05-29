@@ -2,9 +2,10 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Home, BookOpen, Map, Library, GraduationCap, ChevronDown, CheckCircle2, Circle, X,
-  Building2, Boxes, AppWindow, Layers, Cpu, Laptop, Heart,
+  Building2, Boxes, AppWindow, Layers, Cpu, Laptop, Heart, Code2, Swords,
 } from 'lucide-react';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
+import { useDsaProgress } from '@/features/progress/useDsaProgress';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
 import { cn } from '@/lib/cn';
@@ -38,9 +39,11 @@ function SectionLink({ to, icon: I, children, end }: { to: string; icon: typeof 
 
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { perModule, overallPct } = useCourseProgress();
+  const { perSub } = useDsaProgress();
   const loc = useLocation();
   const [courseOpen, setCourseOpen] = useState(loc.pathname.startsWith('/learn'));
   const [atlasOpen, setAtlasOpen] = useState(loc.pathname.startsWith('/atlas'));
+  const [dsaOpen, setDsaOpen] = useState(loc.pathname.startsWith('/dsa'));
 
   return (
     <div className="flex h-full flex-col" onClick={() => onNavigate?.()}>
@@ -125,6 +128,59 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             {atlasLinks.map((l) => (
               <SectionLink key={l.to} to={l.to} icon={l.icon}>{l.label}</SectionLink>
             ))}
+          </div>
+        )}
+
+        {/* DSA course group */}
+        <button
+          onClick={() => setDsaOpen((o) => !o)}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-muted hover:bg-surface-2 hover:text-text"
+        >
+          <Code2 size={18} />
+          <span className="flex-1 text-left">DSA Dojo</span>
+          <ChevronDown size={16} className={cn('transition-transform', dsaOpen && 'rotate-180')} />
+        </button>
+        {dsaOpen && (
+          <div className="ml-2 space-y-0.5 border-l border-border pl-2" onClick={() => onNavigate?.()}>
+            <NavLink
+              to="/dsa"
+              end
+              className={({ isActive }) =>
+                cn(
+                  'flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] font-medium transition-colors',
+                  isActive ? 'bg-brand-500/10 text-brand-700 dark:text-brand-300' : 'text-muted hover:bg-surface-2 hover:text-text',
+                )
+              }
+            >
+              <Map size={14} className="opacity-0" /> Overview
+            </NavLink>
+            {perSub.map(({ sub, earned }) => (
+              <NavLink
+                key={sub.id}
+                to={`/dsa/${sub.slug}`}
+                className={({ isActive }) =>
+                  cn(
+                    'flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] transition-colors',
+                    isActive ? 'bg-brand-500/10 font-semibold text-brand-700 dark:text-brand-300' : 'text-muted hover:bg-surface-2 hover:text-text',
+                  )
+                }
+              >
+                {earned ? <CheckCircle2 size={14} className="shrink-0 text-emerald-500" /> : <Circle size={14} className="shrink-0 opacity-40" />}
+                <Icon name={sub.icon} size={14} />
+                <span className="truncate">{sub.title}</span>
+              </NavLink>
+            ))}
+            <NavLink
+              to="/dsa/arena"
+              className={({ isActive }) =>
+                cn(
+                  'flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] font-medium transition-colors',
+                  isActive ? 'bg-accent-500/10 text-accent-700 dark:text-accent-300' : 'text-muted hover:bg-surface-2 hover:text-text',
+                )
+              }
+            >
+              <Swords size={14} className="text-accent-500" /> Interview Arena
+            </NavLink>
           </div>
         )}
 
