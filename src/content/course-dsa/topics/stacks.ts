@@ -319,7 +319,7 @@ public class Main {
         String line = br.readLine();
         if (line == null) line = "";
         Deque<Integer> st = new ArrayDeque<>();
-        for (String tok : line.trim().split("\\s+")) {
+        for (String tok : line.trim().split("\\\\s+")) {
             if (tok.isEmpty()) continue;
             switch (tok) {
                 case "+": { int b = st.pop(), a = st.pop(); st.push(a + b); break; }
