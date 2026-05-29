@@ -1,9 +1,10 @@
 import type { DsaCourse, Problem, SubCourse } from './types';
 import { arrays } from './topics/arrays';
+import { strings } from './topics/strings';
 import { arenaExtraProblems } from './arena';
 
 // Available sub-courses (more added over time). Keep them ordered.
-const subCourses: SubCourse[] = [arrays].sort((a, b) => a.order - b.order);
+const subCourses: SubCourse[] = [arrays, strings].sort((a, b) => a.order - b.order);
 
 export const dsaCourse: DsaCourse = {
   id: 'course-dsa',
@@ -14,7 +15,6 @@ export const dsaCourse: DsaCourse = {
 
 // Topics we’ll add next — shown as "coming soon" on the overview so the path is clear.
 export const plannedTopics: { title: string; icon: string }[] = [
-  { title: 'Strings', icon: 'message' },
   { title: 'Hashing (Map & Set)', icon: 'database' },
   { title: 'Two Pointers & Sliding Window', icon: 'workflow' },
   { title: 'Stacks', icon: 'layers' },

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Trophy, Sparkles, Hand, Wand2 } from 'lucide-react';
+import { ArrowRight, Trophy, Sparkles, Hand, Wand2, Linkedin, Github } from 'lucide-react';
 import { courses } from '@/content/courses';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
@@ -104,9 +104,19 @@ export function HomePage() {
         ))}
       </section>
 
-      {/* Copyright */}
-      <footer className="border-t border-border pt-8 text-center text-xs text-muted">
-        © {new Date().getFullYear()} Igloo. All rights reserved.
+      {/* Developer credit */}
+      <footer className="flex flex-col items-center gap-3 border-t border-border pt-8 text-center">
+        <p className="text-sm text-muted">
+          Designed &amp; developed by <Link to="/about" className="font-semibold text-text hover:text-brand-600 dark:hover:text-brand-300">Aadarsh Raj</Link>
+        </p>
+        <div className="flex items-center gap-3">
+          <a href="https://www.linkedin.com/in/aadarsh-raj/" target="_blank" rel="noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-300" aria-label="LinkedIn">
+            <Linkedin size={17} />
+          </a>
+          <a href="https://github.com/raj-aadarsh" target="_blank" rel="noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-300" aria-label="GitHub">
+            <Github size={17} />
+          </a>
+        </div>
       </footer>
     </div>
   );

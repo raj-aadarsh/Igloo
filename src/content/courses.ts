@@ -54,7 +54,7 @@ export const courses: CourseMeta[] = [
     title: dsaCourse.title,
     tagline: dsaCourse.tagline,
     icon: 'cap',
-    accent: 'emerald',
+    accent: 'brand',
     status: 'available',
     overviewPath: '/dsa',
     moduleCount: totalSubCourses,
