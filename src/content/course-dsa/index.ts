@@ -6,11 +6,13 @@ import { twoPointers } from './topics/two-pointers';
 import { stacks } from './topics/stacks';
 import { queues } from './topics/queues';
 import { linkedLists } from './topics/linked-lists';
+import { recursion } from './topics/recursion';
 import { binarySearch } from './topics/binary-search';
+import { sorting } from './topics/sorting';
 import { arenaExtraProblems } from './arena';
 
 // Available sub-courses (more added over time). Keep them ordered.
-const subCourses: SubCourse[] = [arrays, strings, hashing, twoPointers, stacks, queues, linkedLists, binarySearch].sort((a, b) => a.order - b.order);
+const subCourses: SubCourse[] = [arrays, strings, hashing, twoPointers, stacks, queues, linkedLists, recursion, binarySearch, sorting].sort((a, b) => a.order - b.order);
 
 export const dsaCourse: DsaCourse = {
   id: 'course-dsa',
@@ -21,8 +23,6 @@ export const dsaCourse: DsaCourse = {
 
 // Topics we’ll add next — shown as "coming soon" on the overview so the path is clear.
 export const plannedTopics: { title: string; icon: string }[] = [
-  { title: 'Recursion & Backtracking', icon: 'workflow' },
-  { title: 'Sorting', icon: 'layers' },
   { title: 'Trees & BST', icon: 'network' },
   { title: 'Heaps / Priority Queue', icon: 'layers' },
   { title: 'Graphs', icon: 'network' },
