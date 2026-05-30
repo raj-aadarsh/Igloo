@@ -10,6 +10,7 @@
 // ---------------------------------------------------------------------------
 import { course as aiCourse, totalLessons as aiLessons } from './course-ai';
 import { dsaCourse, totalProblems as dsaProblems, totalSubCourses } from './course-dsa';
+import { osCourse, osTotalLessons } from './course-os';
 
 export interface CourseExtra {
   label: string;
@@ -60,6 +61,18 @@ export const courses: CourseMeta[] = [
     moduleCount: totalSubCourses,
     lessonCount: dsaProblems,
     extras: [{ label: 'Interview Arena', to: '/dsa/arena' }],
+  },
+  {
+    id: osCourse.id,
+    title: osCourse.title,
+    tagline: osCourse.tagline,
+    icon: 'cpu',
+    accent: 'violet',
+    status: 'available',
+    overviewPath: '/os',
+    moduleCount: osCourse.modules.length,
+    lessonCount: osTotalLessons,
+    extras: [{ label: 'Final Exam', to: '/os/exam' }],
   },
   // ↓ Placeholder slot — signals Igloo is a general platform. Add real courses
   //   (any topic) by following the steps in the header comment.

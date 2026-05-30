@@ -21,7 +21,11 @@ export type WidgetKey =
   | 'array-viz'
   | 'sliding-window'
   | 'stack-viz'
-  | 'bigo-cheat';
+  | 'bigo-cheat'
+  // OS course widgets
+  | 'os-layers'
+  | 'process-states'
+  | 'cpu-scheduling';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

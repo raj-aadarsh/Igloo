@@ -13,6 +13,9 @@ import { ArrayViz } from './dsa/ArrayViz';
 import { SlidingWindowViz } from './dsa/SlidingWindowViz';
 import { StackViz } from './dsa/StackViz';
 import { BigOCheat } from './dsa/BigOCheat';
+import { OsLayers } from './os/OsLayers';
+import { ProcessStates } from './os/ProcessStates';
+import { CpuScheduling } from './os/CpuScheduling';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -31,6 +34,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'sliding-window': SlidingWindowViz,
   'stack-viz': StackViz,
   'bigo-cheat': BigOCheat,
+  'os-layers': OsLayers,
+  'process-states': ProcessStates,
+  'cpu-scheduling': CpuScheduling,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

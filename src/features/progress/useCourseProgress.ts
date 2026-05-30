@@ -1,7 +1,9 @@
-import { course, totalLessons } from '@/content/course-ai';
+import type { Course } from '@/content/types';
+import { course as aiCourse } from '@/content/course-ai';
 import { useProgress } from './ProgressProvider';
 
-export function useCourseProgress() {
+// Per-module progress for any theory course (defaults to the AI course).
+export function useCourseProgress(course: Course = aiCourse) {
   const { completedLessons } = useProgress();
 
   const doneCount = (lessonIds: string[]) => lessonIds.filter((id) => completedLessons[id]).length;
@@ -12,6 +14,7 @@ export function useCourseProgress() {
     return { module: m, done, total: ids.length, complete: done === ids.length && ids.length > 0 };
   });
 
+  const totalLessons = course.modules.reduce((acc, m) => acc + m.lessons.length, 0);
   const totalDone = perModule.reduce((acc, m) => acc + m.done, 0);
   const overallPct = totalLessons ? Math.round((totalDone / totalLessons) * 100) : 0;
 

@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, CheckCircle2, Circle, Clock, ExternalLink } from 'lucide-react';
-import { course, getModuleBySlug } from '@/content/course-ai';
-import type { Resource } from '@/content/types';
+import type { Course, Resource } from '@/content/types';
+import { course as aiCourse } from '@/content/course-ai';
 import { LessonRenderer } from './LessonRenderer';
 import { Quiz } from '@/components/quiz/Quiz';
 import { Icon } from '@/components/ui/Icon';
@@ -15,9 +15,17 @@ const kindLabel: Record<Resource['kind'], string> = {
   docs: 'Docs', video: 'Video', article: 'Article', project: 'Try it', tool: 'Tool', course: 'Course',
 };
 
-export function ModulePage() {
+export function ModulePage({
+  course = aiCourse,
+  basePath = '/learn',
+  examPath = '/exam',
+}: {
+  course?: Course;
+  basePath?: string;
+  examPath?: string;
+}) {
   const { slug } = useParams();
-  const module = slug ? getModuleBySlug(slug) : undefined;
+  const module = course.modules.find((m) => m.slug === slug);
   const { isLessonDone, markLesson } = useProgress();
 
   useEffect(() => {
@@ -95,12 +103,12 @@ export function ModulePage() {
       {/* Prev / Next */}
       <nav className="mt-12 flex items-center justify-between gap-3 border-t border-border pt-6">
         {prev ? (
-          <Link to={`/learn/${prev.slug}`}><Button variant="ghost"><ArrowLeft size={16} /> {prev.title}</Button></Link>
+          <Link to={`${basePath}/${prev.slug}`}><Button variant="ghost"><ArrowLeft size={16} /> {prev.title}</Button></Link>
         ) : <span />}
         {next ? (
-          <Link to={`/learn/${next.slug}`}><Button>{next.title} <ArrowRight size={16} /></Button></Link>
+          <Link to={`${basePath}/${next.slug}`}><Button>{next.title} <ArrowRight size={16} /></Button></Link>
         ) : (
-          <Link to="/exam"><Button variant="accent">Take the Final Exam <ArrowRight size={16} /></Button></Link>
+          <Link to={examPath}><Button variant="accent">Take the Final Exam <ArrowRight size={16} /></Button></Link>
         )}
       </nav>
     </motion.article>

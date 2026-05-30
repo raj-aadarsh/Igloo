@@ -8,6 +8,12 @@ import { Button } from '@/components/ui/primitives';
 
 const EXAM_SIZE = 15;
 
+interface ExamProps {
+  pool?: Question[];
+  quizId?: string;
+  reviewPath?: string;
+}
+
 function sample<T>(arr: T[], n: number): T[] {
   const copy = [...arr];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -17,8 +23,8 @@ function sample<T>(arr: T[], n: number): T[] {
   return copy.slice(0, n);
 }
 
-export function ExamPage() {
-  const pool = useMemo(() => allQuestions(), []);
+export function ExamPage({ pool: poolProp, quizId = 'final-exam', reviewPath = '/' }: ExamProps = {}) {
+  const pool = useMemo(() => poolProp ?? allQuestions(), [poolProp]);
   const [seed, setSeed] = useState(0);
   const [started, setStarted] = useState(false);
 
@@ -57,10 +63,10 @@ export function ExamPage() {
         <Button variant="outline" onClick={() => setSeed((s) => s + 1)}><Shuffle size={16} /> New set</Button>
       </div>
 
-      <Quiz key={seed} quizId="final-exam" questions={questions} title="Your exam" />
+      <Quiz key={seed} quizId={quizId} questions={questions} title="Your exam" />
 
       <div className="mt-8 text-center text-sm text-muted">
-        Want to review? Head back to <Link to="/" className="link-underline">the modules</Link> or skim the <Link to="/glossary" className="link-underline">glossary</Link>.
+        Want to review? Head back to <Link to={reviewPath} className="link-underline">the course</Link>.
       </div>
     </div>
   );
