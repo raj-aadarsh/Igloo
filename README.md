@@ -31,8 +31,11 @@ right in the browser. Each topic (a **sub-course**) follows the same addictive l
 > **Heads-up:** the Java engine (CheerpJ) loads from its CDN, so clicking **Run & check** needs
 > an internet connection. Everything else — reading, the AI course — works offline.
 
-Topics live now: **Arrays** (more are being added: Strings, Hashing, Stacks, Linked Lists,
-Trees, Graphs, DP, and beyond).
+All 15 topics are live: **Arrays, Strings, Hashing, Two Pointers & Sliding Window, Stacks,
+Queues & Deques, Linked Lists, Recursion & Backtracking, Binary Search, Sorting, Trees & BST,
+Heaps, Graphs, Dynamic Programming, and Greedy** — 90 problems in all, plus the Interview Arena.
+Every solution is compiled & run against its tests with `javac --release 8` (matching the
+browser's Java engine).
 
 ---
 
