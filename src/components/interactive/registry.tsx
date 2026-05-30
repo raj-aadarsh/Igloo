@@ -16,6 +16,10 @@ import { BigOCheat } from './dsa/BigOCheat';
 import { OsLayers } from './os/OsLayers';
 import { ProcessStates } from './os/ProcessStates';
 import { CpuScheduling } from './os/CpuScheduling';
+import { ProducerConsumer } from './os/ProducerConsumer';
+import { DeadlockRAG } from './os/DeadlockRAG';
+import { MemoryFit } from './os/MemoryFit';
+import { PageReplacement } from './os/PageReplacement';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -37,6 +41,10 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'os-layers': OsLayers,
   'process-states': ProcessStates,
   'cpu-scheduling': CpuScheduling,
+  'producer-consumer': ProducerConsumer,
+  'deadlock-rag': DeadlockRAG,
+  'memory-fit': MemoryFit,
+  'page-replacement': PageReplacement,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

@@ -25,7 +25,11 @@ export type WidgetKey =
   // OS course widgets
   | 'os-layers'
   | 'process-states'
-  | 'cpu-scheduling';
+  | 'cpu-scheduling'
+  | 'producer-consumer'
+  | 'deadlock-rag'
+  | 'memory-fit'
+  | 'page-replacement';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
