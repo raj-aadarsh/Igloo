@@ -43,6 +43,10 @@ export const m3: Module = {
           '**Priority scheduling** — highest priority runs first. Risk: **starvation** of low-priority jobs (fixed with **aging**).',
           '**Multilevel Queue** — separate queues (e.g. system / interactive / batch), each with its own policy.',
         ] },
+        { type: 'keyterms', title: 'Preemptive & "remaining-time" variants', terms: [
+          { term: 'SRTF', def: 'Shortest Remaining Time First — the preemptive version of SJF; if a shorter job arrives mid-execution, it takes over.' },
+          { term: 'LJF / LRTF', def: 'Longest Job First / Longest Remaining Time First — the opposites of SJF/SRTF. Mostly theoretical; they give poor average waiting time.' },
+        ] },
         { type: 'keyterms', terms: [
           { term: 'Starvation', def: 'A process waits indefinitely because others keep being chosen.' },
           { term: 'Aging', def: 'Gradually raise a waiting process’s priority so it eventually runs — the fix for starvation.' },

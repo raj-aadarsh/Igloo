@@ -55,6 +55,28 @@ export const m6: Module = {
         { type: 'callout', variant: 'tip', text: 'Paging = fixed-size, no external fragmentation, invisible to the programmer. Segmentation = variable-size, matches logical structure, can fragment. Know the contrast — it’s a classic interview question.' },
       ],
     },
+    {
+      id: 'os-m6-l4',
+      title: 'Memory hierarchy & cache',
+      minutes: 6,
+      blocks: [
+        { type: 'p', text: 'Memory forms a **hierarchy**: tiny/fast/expensive at the top (registers, cache), large/slow/cheap at the bottom (disk). The OS and hardware move data up and down it to feel fast while staying affordable.' },
+        { type: 'keyterms', title: 'Primary vs Secondary memory', terms: [
+          { term: 'Primary memory', def: 'Directly accessible by the CPU and (mostly) volatile — RAM and ROM. Fast, smaller, loses data on power-off (RAM).' },
+          { term: 'Secondary memory', def: 'Persistent storage not directly executed by the CPU — hard disks, SSDs. Slower, larger, non-volatile.' },
+        ] },
+        { type: 'h2', text: 'Cache memory' },
+        { type: 'p', text: '**Cache** is an extremely fast, small memory that sits between the CPU and RAM. It holds frequently-used data and instructions so the CPU gets them without waiting on slower RAM — exploiting **locality of reference**.' },
+        { type: 'h2', text: 'Cache mapping' },
+        { type: 'p', text: 'When a block of RAM is brought into the cache, **cache mapping** decides where it can go:' },
+        { type: 'keyterms', terms: [
+          { term: 'Direct mapping', def: 'Each memory block maps to exactly one cache line. Simple, fast, cheap — but two blocks fighting for the same line cause misses.' },
+          { term: 'Associative (fully)', def: 'A block can go in any cache line. Flexible (fewest conflict misses) but searching all lines is expensive.' },
+          { term: 'Set-associative', def: 'A compromise: the cache is split into sets; a block maps to one set but any line within it. Best balance of performance and cost — what real CPUs use.' },
+        ] },
+        { type: 'callout', variant: 'tip', title: 'Bonus: static vs dynamic binding', text: 'A related compile/runtime idea: **static binding** resolves function/variable references at **compile time** (faster, less flexible — e.g. function overloading). **Dynamic binding** resolves them at **run time** (more flexible — e.g. virtual functions / overriding), at a small speed cost.' },
+      ],
+    },
   ],
   quiz: [
     { id: 'os-m6-q1', type: 'single', prompt: 'Which hardware translates logical addresses to physical addresses at runtime?', options: ['ALU', 'MMU', 'TLB cache only', 'Disk controller'], correct: [1], explanation: 'The Memory Management Unit performs logical→physical translation.' },
@@ -62,6 +84,8 @@ export const m6: Module = {
     { id: 'os-m6-q3', type: 'single', prompt: 'Paging mainly eliminates which problem?', options: ['Internal fragmentation', 'External fragmentation', 'Deadlock', 'Race conditions'], correct: [1], explanation: 'Any page fits any frame, so external fragmentation goes away (a little internal remains).' },
     { id: 'os-m6-q4', type: 'single', prompt: 'Best Fit chooses…', options: ['The first hole that fits', 'The smallest hole that fits', 'The largest hole', 'A random hole'], correct: [1], explanation: 'Best Fit picks the smallest hole large enough — minimizing immediate leftover.' },
     { id: 'os-m6-q5', type: 'single', prompt: 'A key difference: paging uses ____ blocks while segmentation uses ____ blocks.', options: ['variable / fixed', 'fixed / variable', 'fixed / fixed', 'variable / variable'], correct: [1], explanation: 'Paging = fixed-size pages; segmentation = variable-size logical segments.' },
+    { id: 'os-m6-q6', type: 'single', prompt: 'Which cache mapping lets a memory block go into ANY cache line?', options: ['Direct mapping', 'Fully associative mapping', 'Set-associative mapping', 'None'], correct: [1], explanation: 'Fully associative allows a block anywhere — most flexible, but searching is costly.' },
+    { id: 'os-m6-q7', type: 'single', prompt: 'RAM is ____ memory and a hard disk is ____ memory.', options: ['secondary / primary', 'primary / secondary', 'cache / primary', 'primary / cache'], correct: [1], explanation: 'RAM is primary (CPU-accessible, volatile); disk is secondary (persistent storage).' },
   ],
   resources: [
     { label: 'TutorialsPoint — Memory Management', url: 'https://www.tutorialspoint.com/operating_system/os_memory_management.htm', kind: 'article', free: true },

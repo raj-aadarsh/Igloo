@@ -1,0 +1,421 @@
+                                    Operating SyStem
+An operating system (OS) is system software that manages computer hardware, software resources, and provides
+common services for computer programs. So, it manages the computer’s memory, processes, devices, files, and
+security aspects of the system. It also allows us to communicate with the computer without knowing how to speak
+the computer’s language. Without an operating system, a computer is not useful.
+
+Types of OS :-
+   1. Batch Operating System : This type of operating system does not interact with the computer directly. There
+      is an operator which takes similar jobs having the same requirement and groups them into batches. It is the
+      responsibility of the operator to sort jobs with similar needs.
+      Advantages: Multiple users can share the batch systems. The idle time for the batch system is very less.
+      Easy to manage large work repeatedly in batch systems.
+      Disadvantages: The computer operators should be well known with batch systems. Batch systems are hard
+      to debug and its costly. The other jobs will have to wait for an unknown time if any job fails.
+      Example: Payroll Systems.
+
+
+
+
+   2. Multi-Programming Operating System: More than one program is present in the main memory and any
+      one of them can be kept in execution. This is basically used for better execution of resources.
+      This helps in reducing response time.
+      Example: Windows
+   3. Multi-Processing Operating System: More than one CPU is used for the execution of resources. It betters
+      the throughput of the System.
+      Advantages: It increases the throughput of the system. As it has several processors, so, if one processor
+      fails, we can proceed with another processor.
+      Disadvantages: But due to the multiple CPU, it can be more complex and somehow difficult to understand.
+      Example: Windows NT/2000/XP, Unix, etc.
+
+
+
+
+   4. Multi-Tasking Operating System: It is a multiprogramming Operating System with having facility of a Round-
+      Robin Scheduling Algorithm. It can run multiple programs simultaneously.
+      Advantages: Multiple Programs can be executed simultaneously in Multi-Tasking Operating System. It
+      comes with proper memory management.
+      Disadvantages: The system gets heated in case of heavy programs multiple times.
+   Example: Microsoft Windows.
+
+
+
+
+5. Time-Sharing Operating System: In this, tasks are assigned specific time intervals to run smoothly. Each
+   user is allocated CPU time when they use the system. The allocated time for each task is known as a
+   quantum. Whether it is a single user or multiple users, the operating system switches to the next task once
+   the quantum time interval is completed.
+   Advantages: Equal opportunity to all tasks, CPU idle time reduced, allowed resource sharing.
+   Disadvantages: Reliability Problem, High-Overload, Complexity, and security risks.
+   Example: Windows terminal Service.
+6. Distributed Operating System: This operating system is a recent advancement in computer technology. It
+   connects computers through a shared network, allowing them to communicate. Each computer has its own
+   memory and CPU. It is called a distributed system. The key benefit is remote access, where users can access
+   files or software on other connected systems.
+   Advantages: Failure of one will not affect the other network communication, as all systems are independent
+   of each other. Since resources are being shared, computation is highly fast and durable. These systems are
+   easily scalable as many systems can be easily added to the network.
+   Disadvantages: Expensive. Failure of the main network will stop the entire communication.
+   Example: LOCUS (This OS focuses on Resource Management and Load Balancing, developed by University
+   of California).
+
+
+
+
+7. Network Operating System: A network operating system is a type of operating system that runs on a server
+   and helps manage various networking functions. It allows users to share files, printers, applications, and
+   security features within a small private network. One important characteristic of network operating systems
+   is that all users have knowledge of the network's configuration, other users' connections, and individual
+   settings.
+   Advantages: Highly stable, secure, new systems can be easily integrated. Server can be accessed remotely.
+   Disadvantages: Expensive, Regular maintenance.
+   Examples: Windows 2008, Mac OS X, Linux, etc.
+8. Real-Time Operating System: These types of OS serve real-time systems. The time interval required to
+   process and respond to inputs is very small. This time interval is called response time. Real-time systems
+   are used when there are time requirements that are very strict.
+   Example: Missile Systems, Air Traffic Control Systems, etc.
+   Types:
+   Hard Real-Time Systems: They are meant for applications where time constraints are very-very strict like
+   automatic parachutes, airbags, etc.
+   Soft Real-Time Systems: These OSs are for applications where time-constraint is less strict.
+   Advantages: Memory management, fast process, Error free systems, etc.
+       Disadvantages: Heavy and expensive resources required, Complex algorithms.
+Difference between Multiprogramming, multitasking, multithreading, and multiprocessing:
+
+
+
+
+Socket :-
+A socket is an endpoint for communication between processes over a network. When two processes want to
+communicate, they each use a socket, which is identified by an IP address and a port number. In the case of a
+server, it listens on a designated port for incoming client requests. When a request is received, the server accepts
+the connection from the client's socket, allowing communication to take place.
+
+Kernel :-
+The kernel is the central core component of an operating system. It plays a crucial role in managing computer
+operations and hardware. The kernel acts as a bridge between user-level applications and the hardware,
+facilitating communication between them. It also handles important tasks such as managing memory and CPU
+time allocation. Additionally, the kernel determines the state of incoming processes and controls essential
+components like disk, memory, and task management within the operating system.
+
+Monolithic Kernel :-
+A monolithic kernel is a type of kernel where all the operating system services operate within the kernel space. It
+is known for providing good performance but has a large amount of code, making it complex. In a monolithic
+kernel, there are dependencies between different system components, which can make it challenging to modify
+or debug. Examples: Linux, Unix, etc.
+
+
+
+Program :-
+Program is a set of instructions to perform a certain task. Example: Chrome.exe
+Process :-
+Process is an instance of an executing program. For example, we write our computer programs in a text file and
+when we execute this program, it becomes a process which performs all the tasks mentioned in the program.
+
+Thread :-
+Thread is a path of execution within a process. A thread is also known as a lightweight process. The idea is to
+achieve parallelism by dividing a process into multiple threads. For example, in autosave thread, it saves the
+user's work automatically, ensuring that the document is saved at regular intervals without interrupting the user's
+editing experience.
+
+
+
+Virtual Memory :-
+Virtual memory is a computer technique that allows a computer to use more memory than it physically has. It
+creates a simulated memory space on the hard disk that acts like extra RAM. The main benefit is that programs
+can be larger than the actual physical memory. Virtual memory serves two purposes: it extends the use of
+physical memory by utilizing the disk, and it provides memory protection by translating virtual addresses to
+physical addresses. This allows programs to run smoothly even if there is not enough physical memory available,
+and it helps prevent one program from interfering with or accessing the memory of another program.
+
+Thrashing :-
+Thrashing is when the system is overwhelmed with handling page faults, resulting in minimal actual work being
+accomplished.
+⦿Handling page faults refer to the process by which a computer system manages memory when a program or
+process requests data that is not currently present in physical memory (RAM). When a page fault occurs, the
+system needs to retrieve the required data from secondary storage (such as a hard disk) and load it into memory
+before the program can proceed.
+
+
+
+RAID (Redundant Arrays of Independent Disks) :-
+RAID is a technique which makes use of a combination of multiple disks instead of using a single disk for
+increased performance, data redundancy or both. Data redundancy, although taking up extra space, adds to disk
+reliability. This means, in case of disk failure, if the same data is also backed up onto another disk, we can retrieve
+the data and go on with the operation.
+Types :-
+
+   •   RAID-0 (Stripping) :-
+   •   RAID-1 (Mirroring) :-
+
+
+
+
+   •   RAID-0+1 :-
+
+
+
+
+   •   RAID-1+0 :-
+
+
+
+
+   •   RAID-2 (Bit-Level Stripping with Dedicated Parity) :-
+Here As the data is divided at the bit level and not at the block level, the complexity increases. Actually, A
+minimum of 39 disks would be required, of which 32 would be for storing individual bits and 7 for error
+correction.
+   •   RAID-3 (Byte-Level Stripping with Dedicated Parity) :-
+
+
+
+
+   •   RAID-4 (Block-Level Stripping with Dedicated Parity) :-
+This configuration is quite like RAID 3, with the exception that here the disk is divided into blocks, not bytes. This
+allows each disk in the set to function independently of the rest.
+
+
+
+
+   •   RAID-5 (Block-Level Stripping with Distributed Parity) :-
+
+
+
+
+   •   RAID-6 (Block-Level Stripping with two Parity Bits) :-
+
+
+
+
+Deadlock :-
+A Deadlock is a situation where each of the computer processes waits for a resource which is being assigned to
+some other process. In this situation, none of the processes gets executed since the resource it needs is held by
+some other process which is also waiting for some other resource to be released.
+Starvation :-
+Starvation is a situation where the low priority process got blocked and the high priority processes proceed.
+
+⦿Ageing (Solution to Starvation) is a technique of gradually increasing the priority of processes that wait in the
+system for a long time. The idea behind ageing is to give older processes a higher priority so that they eventually
+receive their fair share of CPU time, even if they have been waiting for a while.
+Difference between Deadlock and Starvation :-
+
+
+
+
+Different Conditions for a Deadlock :-
+
+   1. Mutual Exclusion: A resource can only be shared in mutually exclusive manner. It implies, if two process
+      cannot use the same resource at the same time.
+   2. Hold and Wait: A process waits for some resources while holding another resource at the same time.
+   3. No preemption: The process which once scheduled will be executed till the completion. No other process
+      can be scheduled by the scheduler meanwhile.
+   4. Circular Wait: All the processes must be waiting for the resources in a cyclic manner so that the last
+      process is waiting for the resource which is being held by the first process.
+
+Methods for Handling Deadlocks :-
+
+   1) Deadlock Prevention: The idea is to not let the system into a deadlock state. This system will make sure
+      that above mentioned four conditions will not arise. By eliminating mutual exclusion, allow preemption,
+      solve hold and wait, and circular wait solution.
+   2) Deadlock Avoidance: Avoidance is kind of futuristic. By using the strategy of “Avoidance,” we must
+      assume. We need to ensure that all information about resources that the process will need is known to us
+      before the execution of the process. We use Banker’s algorithm (Which is in turn a gift from Dijkstra) to
+      avoid deadlock.
+      In prevention and avoidance, we get the correctness of data but performance decreases.
+   3) Deadlock detection and recovery: If Deadlock prevention or avoidance is not applied to the software then
+      we can handle this by deadlock detection and recovery. which consist of two phases:
+      In the first phase, we examine the state of the process and check whether there is a deadlock or not in the
+      system.
+      If found deadlock in the first phase then we apply the algorithm for recovery of the deadlock.
+    4) Deadlock ignorance: If a deadlock is very rare, then let it happen and reboot the system. This is the
+       approach that both Windows and UNIX take. They use the ostrich algorithm for deadlock ignorance.
+       In Deadlock, ignorance performance is better than the above methods, but not the correctness.
+
+⦿Safe State: A safe state can be defined as a state in which there is no deadlock.
+
+
+
+Fragmentation :-
+The condition of fragmentation depends on the memory allocation system. As the process is loaded and
+unloaded from memory, these empty areas are fragmented into small pieces of memory and due to the small
+size, it cannot be allocated to incoming processes. It is called fragmentation. So, the memory spaces remain
+unused and forms inefficient memory use.
+Types of Fragmentation :-
+
+•   External Fragmentation: It occurs when free memory is scattered throughout the system in small, non-
+    contiguous chunks. The total amount of free memory might be sufficient to fulfill a memory request, but the
+    scattered nature of the available blocks makes it challenging to find a single contiguous block large enough to
+    satisfy the request. This can lead to wasted memory and inefficient memory utilization.
+•   Internal Fragmentation: It happens when allocated memory blocks are larger than the actual space needed
+    by a process, so the process does not fully utilize the entire block. As a result, there is unused or wasted
+    memory within each allocated block. This unused memory is referred to as internal fragmentation.
+
+
+
+Spooling :-
+SPOOL is an acronym for simultaneous peripheral operations online.
+Spooling is a process in which data is temporarily held to be used and executed by a device, program, or system.
+In spooling, there is no interaction between the I/O devices and the CPU. That means there is no need for the
+CPU to wait for the I/O operations to take place. Such operations take a long time to finish executing, so the CPU
+will not wait for them to finish.
+Example: Printing. The documents which are to be printed are stored in the SPOOL and then added to the queue
+for printing. During this time, many processes can perform their operations and use the CPU without waiting
+while the printer executes the printing process on the documents one-by-one.
+
+
+
+Semaphores :-
+Semaphores are just normal variables used to coordinate the activities of multiple processes in a computer
+system. They are used to enforce mutual exclusion, avoid race conditions, and implement synchronization
+between processes.
+The process of using Semaphores provides two operations: wait (P) and signal (V). The wait operation
+decrements the value of the semaphore, and the signal operation increments the value of the semaphore. When
+the value of the semaphore is zero, any process that performs a wait operation will be blocked until another
+process performs a signal operation.
+Semaphores are of two types :-
+
+•   Binary Semaphore: This is also known as a mutex lock. It can have only two values – 0 and 1. Its value is
+    initialized to 1. It is used to implement the solution of critical section problems with multiple processes.
+•   Counting Semaphore: Its value can range over an unrestricted domain. It is used to control access to a
+    resource that has multiple instances.
+
+
+
+
+Mutex (Mutual Exclusion Object) :-
+Mutex is a specific kind of binary semaphore that is used to provide a locking mechanism. It stands for Mutual
+Exclusion Object. Mutex is mainly used to provide mutual exclusion to a specific portion of the code, so that
+process can execute and work with a particular section of the code at a particular time.
+
+⦿Binary semaphore and mutex is different. Maybe due to the implementation mutex may be referred to as a
+binary semaphore.
+Differences between Mutex and Semaphore :-
+Belady’s Anomaly :-
+Belady’s anomaly is the name given to the phenomenon where increasing the number of page frames (Page
+frames represent the available slots in physical memory where pages can be loaded), results in an increase in the
+number of page faults for a given memory access pattern.
+Solution to fix Belady’s Anomaly :-
+Implementing alternative page replacement algo helps eliminate Belady’s Anomaly. Use of stack-based
+algorithms, such as Optimal Page Replacement Algorithm and Least Recently Used (LRU) algorithm, can eliminate
+the issue of increased page faults as these algorithms assign priority to pages.
+
+
+
+Paging :-
+Paging is a memory management technique where the virtual address space of a process is divided into fixed-size
+blocks called pages, which are then mapped to the physical memory (RAM) in the system. It allows for efficient
+allocation of memory by breaking it into smaller, uniform units.
+Paging is used for faster access to data. When a program needs a page, it is available in the main memory(RAM)
+as the OS copies a certain number of pages from your storage device to main memory. Paging allows the physical
+address space of a process to be noncontiguous.
+
+
+
+Demand Paging :-
+Demand paging is a method of virtual memory management which is based on the principle that pages should
+only be brought into memory if the executing process demands them. This is often referred to as lazy evaluation
+as only those pages demanded by the process are swapped from secondary storage to main memory.
+So demand paging works opposite to the principle of loading all pages immediately.
+
+
+
+Segmentation :-
+Segmentation is a memory management technique in which the memory is divided into the variable size parts.
+Each part is known as a segment which can be allocated to a process.
+
+The details about each segment are stored in a table called a segment table. Segment table is stored in one (or
+many) of the segments.
+
+Segment table contains mainly two information about segment:
+
+Base: It is the base address of the segment
+Limit: It is the length of the segment.
+Difference between Primary Memory (RAM, ROM, etc.) and Secondary Memory (Hard Disks, Floppy
+Disks, etc.) :-
+
+
+
+
+Static Binding and Dynamic Binding :-
+Static binding happens when the code is compiled, while dynamic bind happens when the code is executed at run
+time.
+Static Binding :-
+When a compiler acknowledges all the information required to call a function or all the values of the variables
+during compile time, it is called “static binding”. As all the required information is known before runtime, it
+increases the program efficiency and it also enhances the speed of execution of a program. Static Binding makes a
+program very efficient, but it declines the program flexibility, as ‘values of variable’ and ‘function calling’ are
+predefined in the program. Static binding is implemented in a program at the time of coding. Overloading a
+function or an operator is the example of compile time polymorphism i.e., static binding.
+Dynamic Binding :-
+Calling a function or assigning a value to a variable, at run-time is called “Dynamic Binding”. Dynamic binding can
+be associated with run time ‘polymorphism’ and ‘inheritance’ in OOP. Dynamic binding makes the execution of a
+program flexible as it can decide what value should be assigned to the variable and which function should be
+called, at the time of program execution. But as this information is provided at run time it makes the execution
+slower as compared to static binding.
+
+
+
+Scheduling :-
+Process Scheduling is the process of the process manager handling the removal of an active process from the CPU
+and selecting another process based on a specific strategy.
+Terminologies :-
+
+•   Arrival Time: Time at which the process arrives in the ready queue.
+•   Completion Time: Time at which process completes its execution.
+•   Burst Time: Time required by a process for CPU execution.
+•   Turn Around Time = Completion Time – Arrival Time
+•   Waiting Time = Turn Around Time – Burst Time
+Types :-
+    1. FCFS (First Come First Serve): Tasks are always executed on a First-come, First-serve concept.
+    2. SJF (Shortest Job First): Executes tasks with shortest burst time.
+    3. LJF (Longest Job First): Opposite of SJF.
+    4. Priority Scheduling: Schedules tasks based on priority. When the higher priority work arrives while a task
+       with less priority is executed, the higher priority work takes the place of the less priority one. Lower is the
+       number assigned, higher is the priority level of a process. And in case the priority number is same for few
+       tasks then FCFS is followed.
+    5. RR (Round Robin): It is a CPU scheduling algorithm where each process is cyclically assigned a fixed time
+       (quantum time) slot. It focuses on Time Sharing technique. Deciding quantum time may be difficult for
+       this algorithm but it does not give special priority to more important tasks.
+    6. SRTF (Shortest Remaining Time First): Tasks are executed first by seeing their remaining time of process.
+    7. LRTF (Longest Remaining Time First): Opposite of SRTF.
+
+Producer-Consumer Problem :-
+The job of the Producer is to generate the data, put it into the buffer, and again start generating data. While the
+job of the Consumer is to consume the data from the buffer.
+The producer should produce data only when the buffer is not full. If the buffer is full, then the producer should
+not be allowed to put any data into the buffer. The consumer should consume data only when the buffer is not
+empty. If the buffer is empty, then the consumer should not be allowed to take any data from the buffer.
+The producer and consumer should not access the buffer at the same time.
+This can be solved by using semaphores.
+
+
+
+Banker’s Algorithm :-
+It is a banker algorithm used to avoid deadlock and allocate resources safely to each process in the computer
+system. It examines all possible tests or activities before deciding whether the allocation should be allowed to
+each process. It also helps the operating system to successfully share the resources between all the processes.
+The banker’s algorithm is named because it checks whether a person should be sanctioned a loan amount or not
+to help the bank system safely simulate allocation resources.
+Cache :-
+Cache memory is an extremely fast memory type that acts as a buffer between RAM and the CPU. It holds
+frequently requested data and instructions so that they are immediately available to the CPU when needed.
+
+Cookies :-
+Cookies are small pieces of text sent to your browser by a website you visit. They help that website remember
+information about your visit, which can both make it easier to visit the site again and make the site more useful to
+you.
+
+Cache Mapping :-
+The process /technique of bringing data of main memory blocks into the cache block is known as cache mapping.
+
+The mapping techniques can be classified as :-
+
+•   Direct Mapping: Each block from main memory has only one possible place in the cache organization in this
+    technique. It is simple, fast, and less expensive.
+•   Associative Mapping: Here the mapping of the main memory block can be done with any of the cache block.
+    The memory address has only 2 fields here: word & tag. This technique is called as fully associative cache
+    mapping. It is easy and faster.
+•   Set-Associative Mapping: It is the combination of advantages of both direct & associative mapping.
+    Here, the cache consists of a number sets, each of which consists of several blocks. It gives best performance
+    but expensive.
+

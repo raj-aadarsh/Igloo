@@ -55,6 +55,7 @@ export const m2: Module = {
           '**Message passing** — send/receive messages via the kernel (pipes, message queues, sockets).',
           '**Pipes / sockets** — streams between processes (sockets work across machines too).',
         ] },
+        { type: 'callout', variant: 'info', title: 'Sockets', text: 'A **socket** is an endpoint for communication, identified by an **IP address + port number**. A server **listens** on a port; when a client connects, the server **accepts** it and the two exchange data — this is how networked processes (browser ↔ web server) communicate.' },
         { type: 'callout', variant: 'tip', text: 'Shared memory is fast but you manage the syncing; message passing is simpler and safer but copies data through the kernel.' },
       ],
     },

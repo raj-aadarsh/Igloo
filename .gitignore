@@ -32,3 +32,7 @@ pnpm-debug.log*
 
 # Vite cache
 .vite/
+
+# Local study references (not committed)
+*.pdf
+reference/

@@ -39,6 +39,7 @@ export const m11: Module = {
           '**TutorialsPoint OS tutorial** — the long-form text reference for every topic here.',
         ] },
         { type: 'callout', variant: 'tip', text: 'Best next step: install a Linux VM and watch real processes (`ps`, `top`), memory (`free`), and scheduling in action. Seeing the concepts on a live system makes them stick.' },
+        { type: 'callout', variant: 'info', title: 'One non-OS term, for completeness', text: '**Cookies** are small pieces of text a website stores in your browser to remember you between visits. They’re a *web* concept (not part of the operating system) — included here only because they often show up in mixed CS notes.' },
       ],
     },
   ],
