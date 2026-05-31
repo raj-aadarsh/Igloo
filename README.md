@@ -14,7 +14,7 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 | 02 | **DSA Dojo** | Data structures & algorithms, code-first: learn each topic, then write & run real Java in the built-in playground, ending with an Interview Arena. |
 | 03 | **Operating Systems** | A visual, interactive tour of OS interview topics — processes, scheduling, synchronization, deadlocks, memory, virtual memory, file systems, disk scheduling & I/O — light on reading, heavy on diagrams. |
 | 04 | **Computer Networks** | How the internet works — OSI/TCP-IP layers, IP & live subnetting, TCP/UDP & the 3-way handshake, DNS/HTTP, TLS & security, and the "what happens when you type a URL" capstone — interactive throughout. |
-| 05 | **Database Management (DBMS)** | ER modeling, keys & constraints, functional dependencies & normalization (1NF–BCNF), transactions/ACID, relational algebra, indexing, and SQL — interactive throughout (in progress). |
+| 05 | **Database Management (DBMS)** | ER modeling, keys & constraints, functional dependencies & normalization (1NF–BCNF), relational algebra, transactions/ACID & serializability, indexing (B/B+ trees), and SQL — with a built-in **live SQL playground** that runs real queries in your browser. |
 | 06 | **Coming soon** | More courses on the way. |
 
 ### 🥋 DSA Dojo (Course 02)

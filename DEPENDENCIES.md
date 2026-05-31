@@ -10,6 +10,7 @@
 | Package | Installed | Declared | Purpose |
 |---|---|---|---|
 | `@codemirror/lang-java` | 6.0.2 | ^6.0.2 | Java syntax highlighting for the editor |
+| `@codemirror/lang-sql` | 6.10.0 | ^6.10.0 | SQL language support for the CodeMirror code editor |
 | `@codemirror/state` | 6.6.0 | ^6.6.0 | CodeMirror editor state |
 | `@codemirror/theme-one-dark` | 6.1.3 | ^6.1.3 | Dark theme for the editor |
 | `@codemirror/view` | 6.43.0 | ^6.43.0 | CodeMirror editor view/DOM |
@@ -20,6 +21,7 @@
 | `react` | 18.3.1 | ^18.3.1 | UI library (components, hooks) |
 | `react-dom` | 18.3.1 | ^18.3.1 | React renderer for the browser |
 | `react-router-dom` | 6.30.3 | ^6.28.0 | Client-side routing (HashRouter, routes) |
+| `sql.js` | 1.14.1 | ^1.14.1 | SQLite library with support for opening and writing databases, prepared statements, and more. This SQLite library is in pure javascript (compiled with emscripten). |
 
 ## Dev dependencies
 | Package | Installed | Declared | Purpose |
@@ -27,6 +29,7 @@
 | `@types/node` | 22.19.19 | ^22.19.19 | TypeScript types for Node APIs |
 | `@types/react` | 18.3.29 | ^18.3.12 | TypeScript types for React |
 | `@types/react-dom` | 18.3.7 | ^18.3.1 | TypeScript types for React DOM |
+| `@types/sql.js` | 1.4.11 | ^1.4.11 | TypeScript definitions for sql.js |
 | `@vitejs/plugin-react` | 4.7.0 | ^4.3.3 | React Fast Refresh + JSX for Vite |
 | `autoprefixer` | 10.5.0 | ^10.4.20 | Adds vendor prefixes to CSS |
 | `postcss` | 8.5.15 | ^8.4.49 | CSS processing pipeline (for Tailwind) |

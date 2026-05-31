@@ -42,7 +42,8 @@ export type WidgetKey =
   | 'normalization-steps'
   | 'relational-algebra'
   | 'transaction-states'
-  | 'btree-index';
+  | 'btree-index'
+  | 'sql-playground';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

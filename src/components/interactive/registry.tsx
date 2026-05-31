@@ -31,6 +31,7 @@ import { NormalizationSteps } from './dbms/NormalizationSteps';
 import { RelationalAlgebra } from './dbms/RelationalAlgebra';
 import { TransactionStates } from './dbms/TransactionStates';
 import { BTreeIndex } from './dbms/BTreeIndex';
+import { SqlPlayground } from './dbms/SqlPlayground';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -67,6 +68,7 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'relational-algebra': RelationalAlgebra,
   'transaction-states': TransactionStates,
   'btree-index': BTreeIndex,
+  'sql-playground': SqlPlayground,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {
