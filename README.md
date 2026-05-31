@@ -12,7 +12,8 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 |---|--------|-------------------|
 | 01 | **The Complete AI Map** | Everything about AI — from the basics to LLMs, agents, MCP, and the full industry landscape. |
 | 02 | **DSA Dojo** | Data structures & algorithms, code-first: learn each topic, then write & run real Java in the built-in playground, ending with an Interview Arena. |
-| 03 | **Coming soon** | More courses on the way. |
+| 03 | **Operating Systems** | A visual, interactive tour of OS interview topics — processes, scheduling, synchronization, deadlocks, memory, virtual memory, file systems, disk scheduling & I/O — light on reading, heavy on diagrams. |
+| 04 | **Coming soon** | More courses on the way. |
 
 ### 🥋 DSA Dojo (Course 02)
 

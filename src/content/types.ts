@@ -29,7 +29,8 @@ export type WidgetKey =
   | 'producer-consumer'
   | 'deadlock-rag'
   | 'memory-fit'
-  | 'page-replacement';
+  | 'page-replacement'
+  | 'disk-scheduling';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

@@ -7,8 +7,12 @@ import { m4 } from './modules/m4-synchronization';
 import { m5 } from './modules/m5-deadlocks';
 import { m6 } from './modules/m6-memory';
 import { m7 } from './modules/m7-virtual-memory';
+import { m8 } from './modules/m8-file-systems';
+import { m9 } from './modules/m9-disk-scheduling';
+import { m10 } from './modules/m10-io';
+import { m11 } from './modules/m11-capstone';
 
-const modules: Module[] = [m0, m1, m2, m3, m4, m5, m6, m7].sort((a, b) => a.order - b.order);
+const modules: Module[] = [m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11].sort((a, b) => a.order - b.order);
 
 export const osCourse: Course = {
   id: 'course-os',
@@ -19,12 +23,8 @@ export const osCourse: Course = {
 
 export const osTotalLessons = modules.reduce((acc, m) => acc + m.lessons.length, 0);
 
-/** Topics still being authored — shown as "coming soon" on the overview. */
-export const osPlannedTopics: string[] = [
-  'File Systems',
-  'Disk Scheduling',
-  'I/O Systems',
-];
+/** All core OS topics are authored. (Add future topics here to show "coming soon".) */
+export const osPlannedTopics: string[] = [];
 
 export function osAllQuestions() {
   return modules.flatMap((m) => m.quiz);

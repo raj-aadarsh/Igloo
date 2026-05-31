@@ -20,6 +20,7 @@ import { ProducerConsumer } from './os/ProducerConsumer';
 import { DeadlockRAG } from './os/DeadlockRAG';
 import { MemoryFit } from './os/MemoryFit';
 import { PageReplacement } from './os/PageReplacement';
+import { DiskScheduling } from './os/DiskScheduling';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -45,6 +46,7 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'deadlock-rag': DeadlockRAG,
   'memory-fit': MemoryFit,
   'page-replacement': PageReplacement,
+  'disk-scheduling': DiskScheduling,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {
