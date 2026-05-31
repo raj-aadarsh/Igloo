@@ -39,7 +39,10 @@ export type WidgetKey =
   // DBMS course widgets
   | 'relational-anatomy'
   | 'er-cardinality'
-  | 'normalization-steps';
+  | 'normalization-steps'
+  | 'relational-algebra'
+  | 'transaction-states'
+  | 'btree-index';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

@@ -21,6 +21,8 @@ import {
   Atom,
   Workflow,
   Bug,
+  Repeat,
+  ListTree,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -47,6 +49,8 @@ const registry: Record<string, LucideIcon> = {
   atom: Atom,
   workflow: Workflow,
   bug: Bug,
+  repeat: Repeat,
+  'list-tree': ListTree,
 };
 
 export function Icon({

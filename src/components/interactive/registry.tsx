@@ -28,6 +28,9 @@ import { UrlJourney } from './cn/UrlJourney';
 import { RelationalAnatomy } from './dbms/RelationalAnatomy';
 import { ErCardinality } from './dbms/ErCardinality';
 import { NormalizationSteps } from './dbms/NormalizationSteps';
+import { RelationalAlgebra } from './dbms/RelationalAlgebra';
+import { TransactionStates } from './dbms/TransactionStates';
+import { BTreeIndex } from './dbms/BTreeIndex';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -61,6 +64,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'relational-anatomy': RelationalAnatomy,
   'er-cardinality': ErCardinality,
   'normalization-steps': NormalizationSteps,
+  'relational-algebra': RelationalAlgebra,
+  'transaction-states': TransactionStates,
+  'btree-index': BTreeIndex,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {
