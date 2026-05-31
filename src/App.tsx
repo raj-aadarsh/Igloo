@@ -6,6 +6,7 @@ import { CourseOverviewPage } from '@/features/course/CourseOverviewPage';
 import { ModulePage } from '@/features/course/ModulePage';
 import { osCourse, osAllQuestions, osPlannedTopics } from '@/content/course-os';
 import { cnCourse, cnAllQuestions, cnPlannedTopics } from '@/content/course-cn';
+import { dbmsCourse, dbmsAllQuestions, dbmsPlannedTopics } from '@/content/course-dbms';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -77,6 +78,23 @@ export default function App() {
         />
         <Route path="/cn/exam" element={<ExamPage pool={cnAllQuestions()} quizId="cn-final-exam" reviewPath="/cn" />} />
         <Route path="/cn/:slug" element={<ModulePage course={cnCourse} basePath="/cn" examPath="/cn/exam" />} />
+        {/* DBMS course */}
+        <Route
+          path="/dbms"
+          element={
+            <CourseOverviewPage
+              course={dbmsCourse}
+              basePath="/dbms"
+              courseNumber={5}
+              accent="brand"
+              blurb="From ER diagrams and normalization to transactions and SQL — visual, hands-on, interview-focused."
+              extras={[{ to: '/dbms/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
+              comingSoon={dbmsPlannedTopics}
+            />
+          }
+        />
+        <Route path="/dbms/exam" element={<ExamPage pool={dbmsAllQuestions()} quizId="dbms-final-exam" reviewPath="/dbms" />} />
+        <Route path="/dbms/:slug" element={<ModulePage course={dbmsCourse} basePath="/dbms" examPath="/dbms/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

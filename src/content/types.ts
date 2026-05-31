@@ -35,7 +35,11 @@ export type WidgetKey =
   | 'osi-layers'
   | 'subnet-calculator'
   | 'tcp-handshake'
-  | 'url-journey';
+  | 'url-journey'
+  // DBMS course widgets
+  | 'relational-anatomy'
+  | 'er-cardinality'
+  | 'normalization-steps';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

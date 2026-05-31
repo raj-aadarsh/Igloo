@@ -25,6 +25,9 @@ import { OsiLayers } from './cn/OsiLayers';
 import { SubnetCalculator } from './cn/SubnetCalculator';
 import { TcpHandshake } from './cn/TcpHandshake';
 import { UrlJourney } from './cn/UrlJourney';
+import { RelationalAnatomy } from './dbms/RelationalAnatomy';
+import { ErCardinality } from './dbms/ErCardinality';
+import { NormalizationSteps } from './dbms/NormalizationSteps';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -55,6 +58,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'subnet-calculator': SubnetCalculator,
   'tcp-handshake': TcpHandshake,
   'url-journey': UrlJourney,
+  'relational-anatomy': RelationalAnatomy,
+  'er-cardinality': ErCardinality,
+  'normalization-steps': NormalizationSteps,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {
