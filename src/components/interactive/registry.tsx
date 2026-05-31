@@ -23,6 +23,8 @@ import { PageReplacement } from './os/PageReplacement';
 import { DiskScheduling } from './os/DiskScheduling';
 import { OsiLayers } from './cn/OsiLayers';
 import { SubnetCalculator } from './cn/SubnetCalculator';
+import { TcpHandshake } from './cn/TcpHandshake';
+import { UrlJourney } from './cn/UrlJourney';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -51,6 +53,8 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'disk-scheduling': DiskScheduling,
   'osi-layers': OsiLayers,
   'subnet-calculator': SubnetCalculator,
+  'tcp-handshake': TcpHandshake,
+  'url-journey': UrlJourney,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

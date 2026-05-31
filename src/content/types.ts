@@ -33,7 +33,9 @@ export type WidgetKey =
   | 'disk-scheduling'
   // Computer Networks course widgets
   | 'osi-layers'
-  | 'subnet-calculator';
+  | 'subnet-calculator'
+  | 'tcp-handshake'
+  | 'url-journey';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
