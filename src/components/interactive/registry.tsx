@@ -21,6 +21,8 @@ import { DeadlockRAG } from './os/DeadlockRAG';
 import { MemoryFit } from './os/MemoryFit';
 import { PageReplacement } from './os/PageReplacement';
 import { DiskScheduling } from './os/DiskScheduling';
+import { OsiLayers } from './cn/OsiLayers';
+import { SubnetCalculator } from './cn/SubnetCalculator';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -47,6 +49,8 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'memory-fit': MemoryFit,
   'page-replacement': PageReplacement,
   'disk-scheduling': DiskScheduling,
+  'osi-layers': OsiLayers,
+  'subnet-calculator': SubnetCalculator,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

@@ -30,7 +30,10 @@ export type WidgetKey =
   | 'deadlock-rag'
   | 'memory-fit'
   | 'page-replacement'
-  | 'disk-scheduling';
+  | 'disk-scheduling'
+  // Computer Networks course widgets
+  | 'osi-layers'
+  | 'subnet-calculator';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

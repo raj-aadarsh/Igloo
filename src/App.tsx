@@ -5,6 +5,7 @@ import { HomePage } from '@/features/course/HomePage';
 import { CourseOverviewPage } from '@/features/course/CourseOverviewPage';
 import { ModulePage } from '@/features/course/ModulePage';
 import { osCourse, osAllQuestions, osPlannedTopics } from '@/content/course-os';
+import { cnCourse, cnAllQuestions, cnPlannedTopics } from '@/content/course-cn';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -59,6 +60,23 @@ export default function App() {
         />
         <Route path="/os/exam" element={<ExamPage pool={osAllQuestions()} quizId="os-final-exam" reviewPath="/os" />} />
         <Route path="/os/:slug" element={<ModulePage course={osCourse} basePath="/os" examPath="/os/exam" />} />
+        {/* Computer Networks course */}
+        <Route
+          path="/cn"
+          element={
+            <CourseOverviewPage
+              course={cnCourse}
+              basePath="/cn"
+              courseNumber={4}
+              accent="brand"
+              blurb="A visual tour of how the internet works — OSI layers, IP & subnetting, TCP/UDP, DNS & HTTP — light on reading, heavy on diagrams."
+              extras={[{ to: '/cn/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
+              comingSoon={cnPlannedTopics}
+            />
+          }
+        />
+        <Route path="/cn/exam" element={<ExamPage pool={cnAllQuestions()} quizId="cn-final-exam" reviewPath="/cn" />} />
+        <Route path="/cn/:slug" element={<ModulePage course={cnCourse} basePath="/cn" examPath="/cn/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

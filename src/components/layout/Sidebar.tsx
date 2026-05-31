@@ -2,12 +2,13 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Home, BookOpen, Map, Library, GraduationCap, ChevronDown, CheckCircle2, Circle, X,
-  Cpu, Heart, Code2, Swords,
+  Cpu, Heart, Code2, Swords, Network,
 } from 'lucide-react';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { useDsaProgress } from '@/features/progress/useDsaProgress';
 import { course as aiCourse } from '@/content/course-ai';
 import { osCourse } from '@/content/course-os';
+import { cnCourse } from '@/content/course-cn';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
 import { cn } from '@/lib/cn';
@@ -46,11 +47,13 @@ function GroupButton({ icon: I, label, open, onClick }: { icon: typeof Home; lab
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { perModule, overallPct } = useCourseProgress();
   const { perModule: osModules } = useCourseProgress(osCourse);
+  const { perModule: cnModules } = useCourseProgress(cnCourse);
   const { perSub } = useDsaProgress();
   const loc = useLocation();
   const [aiOpen, setAiOpen] = useState(loc.pathname.startsWith('/learn') || loc.pathname.startsWith('/atlas') || loc.pathname === '/glossary' || loc.pathname === '/exam');
   const [dsaOpen, setDsaOpen] = useState(loc.pathname.startsWith('/dsa'));
   const [osOpen, setOsOpen] = useState(loc.pathname.startsWith('/os'));
+  const [cnOpen, setCnOpen] = useState(loc.pathname.startsWith('/cn'));
 
   const modLink = (basePath: string) => ({ module, complete }: { module: { id: string; slug: string; icon: string; title: string }; complete: boolean }) => (
     <NavLink
@@ -144,6 +147,17 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             {osModules.map(modLink('/os'))}
             <div className="my-1 ml-2 h-px bg-border/60" />
             <SubLink to="/os/exam" icon={GraduationCap}>Final Exam</SubLink>
+          </div>
+        )}
+
+        {/* Computer Networks course */}
+        <GroupButton icon={Network} label="Computer Networks" open={cnOpen} onClick={() => setCnOpen((o) => !o)} />
+        {cnOpen && (
+          <div className="ml-2 space-y-0.5 border-l border-border pl-2" onClick={() => onNavigate?.()}>
+            <SubLink to="/cn" end>Overview</SubLink>
+            {cnModules.map(modLink('/cn'))}
+            <div className="my-1 ml-2 h-px bg-border/60" />
+            <SubLink to="/cn/exam" icon={GraduationCap}>Final Exam</SubLink>
           </div>
         )}
 
