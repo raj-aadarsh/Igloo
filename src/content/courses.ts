@@ -67,7 +67,7 @@ export const courses: CourseMeta[] = [
     title: osCourse.title,
     tagline: osCourse.tagline,
     icon: 'cpu',
-    accent: 'violet',
+    accent: 'brand',
     status: 'available',
     overviewPath: '/os',
     moduleCount: osCourse.modules.length,

@@ -50,7 +50,7 @@ export default function App() {
               course={osCourse}
               basePath="/os"
               courseNumber={3}
-              accent="violet"
+              accent="brand"
               blurb="A visual, interactive tour of how operating systems work — light on reading, heavy on diagrams."
               extras={[{ to: '/os/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
               comingSoon={osPlannedTopics}
