@@ -3,7 +3,7 @@ import type { Module } from '@/content/types';
 export const m7: Module = {
   id: 'cn-m7',
   slug: 'capstone',
-  order: 7,
+  order: 8,
   title: 'Capstone & What’s Next',
   subtitle: 'The whole network, on one page',
   icon: 'cap',

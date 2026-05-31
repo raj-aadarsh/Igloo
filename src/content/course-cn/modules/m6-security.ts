@@ -3,7 +3,7 @@ import type { Module } from '@/content/types';
 export const m6: Module = {
   id: 'cn-m6',
   slug: 'security',
-  order: 6,
+  order: 7,
   title: 'Network Security & TLS',
   subtitle: 'Encryption, certificates & common attacks',
   icon: 'shield',
