@@ -109,8 +109,8 @@ export function CourseOverviewPage({
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-2 text-muted">
                 <Icon name="boxes" size={18} />
               </div>
-              <div className="min-w-0 flex-1"><span className="truncate font-semibold text-muted">{title}</span></div>
-              <span className="chip">soon</span>
+              <div className="min-w-0 flex-1"><div className="truncate font-semibold text-muted">{title}</div></div>
+              <span className="chip shrink-0">soon</span>
             </div>
           ))}
         </div>
