@@ -4,6 +4,9 @@
 
 Igloo is an interactive learning platform with hands-on demos and pressure-free practice, designed so difficult topics actually feel enjoyable to learn. Almost everything runs offline — the one exception is running Java (used in the DSA Dojo and Core Java courses), which loads its engine from a CDN (details below).
 
+> ### 🎯 Your end-to-end companion for cracking SDE interviews
+> From data structures to system design, Igloo covers **every round a software engineer faces** — coding, CS fundamentals, language depth, and both design interviews — taught visually, with playgrounds where you write and run real code. Less rote reading, more *doing*. Walk in interview-ready.
+
 ---
 
 ## Courses
@@ -18,7 +21,8 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 | 06 | **Core Java Concepts** | The Java that interviews & real work demand — how the JVM runs code, OOP (the 4 pillars), the `equals`/`hashCode` contract, collections (incl. HashMap internals), generics, lambdas & streams, concurrency, and JVM memory/GC — with a built-in **Java playground** that compiles & runs real Java in your browser. |
 | 07 | **Low-Level Design (LLD)** | Turn requirements into clean, extensible class designs — UML & class relationships, SOLID, design patterns (creational/structural/behavioral), and full FAANG machine-coding case studies (Parking Lot, BookMyShow, Splitwise, Vending Machine, Rate Limiter & more) — interactive throughout, with runnable Java. |
 | 08 | **High-Level / System Design** | Architect systems that scale to millions — scaling & load balancing, caching & CDNs, SQL vs NoSQL, replication, sharding & consistent hashing, CAP & consistency, messaging, microservices, and full FAANG case studies (URL shortener, Twitter, Chat, YouTube, Uber) — interactive throughout. |
-| 09 | **Coming soon** | More courses on the way. |
+
+**On the way:** **DevOps Essentials** (Docker, CI/CD, Kubernetes, IaC & cloud) → a short **Git & GitHub** course → **Behavioral / HR interview prep** — rounding out everything from your first commit to your final interview round.
 
 ### 🥋 DSA Dojo (Course 02)
 
