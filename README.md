@@ -22,7 +22,7 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 | 07 | **Low-Level Design (LLD)** | Turn requirements into clean, extensible class designs — UML & class relationships, SOLID, design patterns (creational/structural/behavioral), and full FAANG machine-coding case studies (Parking Lot, BookMyShow, Splitwise, Vending Machine, Rate Limiter & more) — interactive throughout, with runnable Java. |
 | 08 | **High-Level / System Design** | Architect systems that scale to millions — scaling & load balancing, caching & CDNs, SQL vs NoSQL, replication, sharding & consistent hashing, CAP & consistency, messaging, microservices, and full FAANG case studies (URL shortener, Twitter, Chat, YouTube, Uber) — interactive throughout. |
 | 09 | **DevOps Essentials** | Ship faster & safer — the DevOps lifecycle, Docker & containers, CI/CD pipelines, deployment strategies, Kubernetes, Infrastructure as Code, cloud fundamentals, and monitoring/observability — visual and interview-focused throughout. |
-| 10 | **Git & GitHub** | The version control you’ll use every day — commits & the three areas, branching & merging, merge vs rebase, GitHub collaboration (clone/push/pull, PRs, forks) and undoing mistakes — short, visual & interactive (in progress). |
+| 10 | **Git & GitHub** | The version control you’ll use every day — commits & the three areas, branching & merging, merge vs rebase, GitHub collaboration (clone/push/pull, PRs, forks) and undoing mistakes — short, visual & interactive. |
 
 **On the way:** **Behavioral / HR interview prep** — the final piece, rounding out everything from your first commit to your final interview round.
 
