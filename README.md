@@ -2,7 +2,7 @@
 
 > *Warm up to hard ideas.*
 
-Igloo is an interactive learning platform with hands-on demos and pressure-free practice, designed so difficult topics actually feel enjoyable to learn. Almost everything runs offline — the one exception is running Java (used in the DSA Dojo and Core Java courses), which loads its engine from a CDN (details below).
+Igloo is an interactive learning platform with hands-on demos and pressure-free practice, designed so difficult topics actually feel enjoyable to learn. It spans **11 courses** — dozens of interactive widgets, live code & SQL playgrounds, quizzes and final exams — with **no backend and no login** (your progress lives in the browser). Almost everything runs offline — the one exception is running Java (used in the DSA Dojo, Core Java, and LLD courses), which loads its engine from a CDN (details below).
 
 > ### 🎯 Your end-to-end companion for cracking SDE interviews
 > From data structures to system design, Igloo covers **every round a software engineer faces** — coding, CS fundamentals, language depth, and both design interviews — taught visually, with playgrounds where you write and run real code. Less rote reading, more *doing*. Walk in interview-ready.
@@ -40,7 +40,7 @@ right in the browser. Each topic (a **sub-course**) follows the same addictive l
    real interview questions.
 
 > **Heads-up:** the Java engine (CheerpJ) loads from its CDN, so clicking **Run & check** needs
-> an internet connection. Everything else — reading, the AI course — works offline.
+> an internet connection. Everything else — reading and the other courses — works offline.
 
 All 15 topics are live: **Arrays, Strings, Hashing, Two Pointers & Sliding Window, Stacks,
 Queues & Deques, Linked Lists, Recursion & Backtracking, Binary Search, Sorting, Trees & BST,
@@ -59,7 +59,9 @@ browser's Java engine).
 - **CodeMirror + CheerpJ** — the DSA playground compiles & runs **real Java** in your browser (CheerpJ is a WebAssembly JVM)
 - **localStorage** — progress, quiz scores, solved problems (no backend, no login)
 
-> The AI course and all reading work fully offline. The DSA **"Run & check"** button uses CheerpJ's free runtime, which loads from its CDN — so running Java needs an internet connection (everything else stays offline).
+- **sql.js (WASM SQLite)** — the DBMS **live SQL playground** runs real queries fully in-browser (and offline — the engine is bundled)
+
+> All reading, diagrams, quizzes, and the SQL playground work fully offline. The only thing needing the internet is the **"Run"** button for Java (DSA Dojo, Core Java, LLD), which uses CheerpJ's free runtime loaded from its CDN.
 
 ---
 
