@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Home, BookOpen, Map, Library, GraduationCap, ChevronDown, CheckCircle2, Circle, X,
-  Cpu, Heart, Code2, Swords, Network, Database, Coffee, DraftingCompass, Server, Infinity as InfinityIcon,
+  Cpu, Heart, Code2, Swords, Network, Database, Coffee, DraftingCompass, Server, Infinity as InfinityIcon, GitBranch,
 } from 'lucide-react';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { useDsaProgress } from '@/features/progress/useDsaProgress';
@@ -14,6 +14,7 @@ import { javaCourse } from '@/content/course-java';
 import { lldCourse } from '@/content/course-lld';
 import { hldCourse } from '@/content/course-hld';
 import { devopsCourse } from '@/content/course-devops';
+import { gitCourse } from '@/content/course-git';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
 import { cn } from '@/lib/cn';
@@ -58,6 +59,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { perModule: lldModules } = useCourseProgress(lldCourse);
   const { perModule: hldModules } = useCourseProgress(hldCourse);
   const { perModule: devopsModules } = useCourseProgress(devopsCourse);
+  const { perModule: gitModules } = useCourseProgress(gitCourse);
   const { perSub } = useDsaProgress();
   const loc = useLocation();
   const [aiOpen, setAiOpen] = useState(loc.pathname.startsWith('/learn') || loc.pathname.startsWith('/atlas') || loc.pathname === '/glossary' || loc.pathname === '/exam');
@@ -69,6 +71,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const [lldOpen, setLldOpen] = useState(loc.pathname.startsWith('/lld'));
   const [hldOpen, setHldOpen] = useState(loc.pathname.startsWith('/hld'));
   const [devopsOpen, setDevopsOpen] = useState(loc.pathname.startsWith('/devops'));
+  const [gitOpen, setGitOpen] = useState(loc.pathname.startsWith('/git'));
 
   const modLink = (basePath: string) => ({ module, complete }: { module: { id: string; slug: string; icon: string; title: string }; complete: boolean }) => (
     <NavLink
@@ -228,6 +231,17 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             {devopsModules.map(modLink('/devops'))}
             <div className="my-1 ml-2 h-px bg-border/60" />
             <SubLink to="/devops/exam" icon={GraduationCap}>Final Exam</SubLink>
+          </div>
+        )}
+
+        {/* Git & GitHub course */}
+        <GroupButton icon={GitBranch} label="Git & GitHub" open={gitOpen} onClick={() => setGitOpen((o) => !o)} />
+        {gitOpen && (
+          <div className="ml-2 space-y-0.5 border-l border-border pl-2" onClick={() => onNavigate?.()}>
+            <SubLink to="/git" end>Overview</SubLink>
+            {gitModules.map(modLink('/git'))}
+            <div className="my-1 ml-2 h-px bg-border/60" />
+            <SubLink to="/git/exam" icon={GraduationCap}>Final Exam</SubLink>
           </div>
         )}
 

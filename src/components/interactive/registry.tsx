@@ -65,6 +65,9 @@ import { CicdPipeline } from './devops/CicdPipeline';
 import { DeploymentStrategies } from './devops/DeploymentStrategies';
 import { K8sArchitecture } from './devops/K8sArchitecture';
 import { CloudModels } from './devops/CloudModels';
+import { GitAreas } from './git/GitAreas';
+import { GitBranching } from './git/GitBranching';
+import { MergeVsRebase } from './git/MergeVsRebase';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -135,6 +138,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'deployment-strategies': DeploymentStrategies,
   'k8s-architecture': K8sArchitecture,
   'cloud-models': CloudModels,
+  'git-areas': GitAreas,
+  'git-branching': GitBranching,
+  'merge-vs-rebase': MergeVsRebase,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

@@ -11,6 +11,7 @@ import { javaCourse, javaAllQuestions, javaPlannedTopics } from '@/content/cours
 import { lldCourse, lldAllQuestions, lldPlannedTopics } from '@/content/course-lld';
 import { hldCourse, hldAllQuestions, hldPlannedTopics } from '@/content/course-hld';
 import { devopsCourse, devopsAllQuestions, devopsPlannedTopics } from '@/content/course-devops';
+import { gitCourse, gitAllQuestions, gitPlannedTopics } from '@/content/course-git';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -167,6 +168,23 @@ export default function App() {
         />
         <Route path="/devops/exam" element={<ExamPage pool={devopsAllQuestions()} quizId="devops-final-exam" reviewPath="/devops" />} />
         <Route path="/devops/:slug" element={<ModulePage course={devopsCourse} basePath="/devops" examPath="/devops/exam" />} />
+        {/* Git & GitHub course */}
+        <Route
+          path="/git"
+          element={
+            <CourseOverviewPage
+              course={gitCourse}
+              basePath="/git"
+              courseNumber={10}
+              accent="brand"
+              blurb="The version control you’ll use every day — commits & the three areas, branching & merging, merge vs rebase, GitHub collaboration, and undoing mistakes — short, visual, and interactive."
+              extras={[{ to: '/git/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
+              comingSoon={gitPlannedTopics}
+            />
+          }
+        />
+        <Route path="/git/exam" element={<ExamPage pool={gitAllQuestions()} quizId="git-final-exam" reviewPath="/git" />} />
+        <Route path="/git/:slug" element={<ModulePage course={gitCourse} basePath="/git" examPath="/git/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

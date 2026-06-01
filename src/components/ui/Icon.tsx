@@ -27,6 +27,7 @@ import {
   DraftingCompass,
   Server,
   Infinity as InfinityIcon,
+  GitBranch,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -59,6 +60,7 @@ const registry: Record<string, LucideIcon> = {
   'drafting-compass': DraftingCompass,
   server: Server,
   infinity: InfinityIcon,
+  'git-branch': GitBranch,
 };
 
 export function Icon({

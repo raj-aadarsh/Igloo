@@ -80,7 +80,11 @@ export type WidgetKey =
   | 'cicd-pipeline'
   | 'deployment-strategies'
   | 'k8s-architecture'
-  | 'cloud-models';
+  | 'cloud-models'
+  // Git & GitHub course widgets
+  | 'git-areas'
+  | 'git-branching'
+  | 'merge-vs-rebase';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
