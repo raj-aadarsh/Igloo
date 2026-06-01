@@ -47,6 +47,11 @@ import { StateDemo } from './lld/StateDemo';
 import { LldPlayground } from './lld/LldPlayground';
 import { NounExtraction } from './lld/NounExtraction';
 import { ParkingLotDesign } from './lld/ParkingLotDesign';
+import { RequestJourney } from './hld/RequestJourney';
+import { ScalingVisualizer } from './hld/ScalingVisualizer';
+import { LoadBalancerSim } from './hld/LoadBalancerSim';
+import { LatencyNumbers } from './hld/LatencyNumbers';
+import { CapacityEstimator } from './hld/CapacityEstimator';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -99,6 +104,11 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'lld-playground': LldPlayground,
   'noun-extraction': NounExtraction,
   'parking-lot-design': ParkingLotDesign,
+  'request-journey': RequestJourney,
+  'scaling-visualizer': ScalingVisualizer,
+  'load-balancer-sim': LoadBalancerSim,
+  'latency-numbers': LatencyNumbers,
+  'capacity-estimator': CapacityEstimator,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

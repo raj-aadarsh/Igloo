@@ -60,7 +60,13 @@ export type WidgetKey =
   | 'state-demo'
   | 'lld-playground'
   | 'noun-extraction'
-  | 'parking-lot-design';
+  | 'parking-lot-design'
+  // High-Level / System Design course widgets
+  | 'request-journey'
+  | 'scaling-visualizer'
+  | 'load-balancer-sim'
+  | 'latency-numbers'
+  | 'capacity-estimator';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

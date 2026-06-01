@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Home, BookOpen, Map, Library, GraduationCap, ChevronDown, CheckCircle2, Circle, X,
-  Cpu, Heart, Code2, Swords, Network, Database, Coffee, DraftingCompass,
+  Cpu, Heart, Code2, Swords, Network, Database, Coffee, DraftingCompass, Server,
 } from 'lucide-react';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { useDsaProgress } from '@/features/progress/useDsaProgress';
@@ -12,6 +12,7 @@ import { cnCourse } from '@/content/course-cn';
 import { dbmsCourse } from '@/content/course-dbms';
 import { javaCourse } from '@/content/course-java';
 import { lldCourse } from '@/content/course-lld';
+import { hldCourse } from '@/content/course-hld';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
 import { cn } from '@/lib/cn';
@@ -54,6 +55,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { perModule: dbmsModules } = useCourseProgress(dbmsCourse);
   const { perModule: javaModules } = useCourseProgress(javaCourse);
   const { perModule: lldModules } = useCourseProgress(lldCourse);
+  const { perModule: hldModules } = useCourseProgress(hldCourse);
   const { perSub } = useDsaProgress();
   const loc = useLocation();
   const [aiOpen, setAiOpen] = useState(loc.pathname.startsWith('/learn') || loc.pathname.startsWith('/atlas') || loc.pathname === '/glossary' || loc.pathname === '/exam');
@@ -63,6 +65,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const [dbmsOpen, setDbmsOpen] = useState(loc.pathname.startsWith('/dbms'));
   const [javaOpen, setJavaOpen] = useState(loc.pathname.startsWith('/java'));
   const [lldOpen, setLldOpen] = useState(loc.pathname.startsWith('/lld'));
+  const [hldOpen, setHldOpen] = useState(loc.pathname.startsWith('/hld'));
 
   const modLink = (basePath: string) => ({ module, complete }: { module: { id: string; slug: string; icon: string; title: string }; complete: boolean }) => (
     <NavLink
@@ -200,6 +203,17 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             {lldModules.map(modLink('/lld'))}
             <div className="my-1 ml-2 h-px bg-border/60" />
             <SubLink to="/lld/exam" icon={GraduationCap}>Final Exam</SubLink>
+          </div>
+        )}
+
+        {/* High-Level / System Design course */}
+        <GroupButton icon={Server} label="System Design (HLD)" open={hldOpen} onClick={() => setHldOpen((o) => !o)} />
+        {hldOpen && (
+          <div className="ml-2 space-y-0.5 border-l border-border pl-2" onClick={() => onNavigate?.()}>
+            <SubLink to="/hld" end>Overview</SubLink>
+            {hldModules.map(modLink('/hld'))}
+            <div className="my-1 ml-2 h-px bg-border/60" />
+            <SubLink to="/hld/exam" icon={GraduationCap}>Final Exam</SubLink>
           </div>
         )}
 

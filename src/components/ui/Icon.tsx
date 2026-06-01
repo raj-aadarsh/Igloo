@@ -25,6 +25,7 @@ import {
   ListTree,
   Coffee,
   DraftingCompass,
+  Server,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -55,6 +56,7 @@ const registry: Record<string, LucideIcon> = {
   'list-tree': ListTree,
   coffee: Coffee,
   'drafting-compass': DraftingCompass,
+  server: Server,
 };
 
 export function Icon({

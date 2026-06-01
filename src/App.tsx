@@ -9,6 +9,7 @@ import { cnCourse, cnAllQuestions, cnPlannedTopics } from '@/content/course-cn';
 import { dbmsCourse, dbmsAllQuestions, dbmsPlannedTopics } from '@/content/course-dbms';
 import { javaCourse, javaAllQuestions, javaPlannedTopics } from '@/content/course-java';
 import { lldCourse, lldAllQuestions, lldPlannedTopics } from '@/content/course-lld';
+import { hldCourse, hldAllQuestions, hldPlannedTopics } from '@/content/course-hld';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -131,6 +132,23 @@ export default function App() {
         />
         <Route path="/lld/exam" element={<ExamPage pool={lldAllQuestions()} quizId="lld-final-exam" reviewPath="/lld" />} />
         <Route path="/lld/:slug" element={<ModulePage course={lldCourse} basePath="/lld" examPath="/lld/exam" />} />
+        {/* High-Level / System Design course */}
+        <Route
+          path="/hld"
+          element={
+            <CourseOverviewPage
+              course={hldCourse}
+              basePath="/hld"
+              courseNumber={8}
+              accent="brand"
+              blurb="Architect systems that scale to millions — scaling, load balancing, caching, databases, sharding, CAP, messaging, and full FAANG case studies, interactive throughout."
+              extras={[{ to: '/hld/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
+              comingSoon={hldPlannedTopics}
+            />
+          }
+        />
+        <Route path="/hld/exam" element={<ExamPage pool={hldAllQuestions()} quizId="hld-final-exam" reviewPath="/hld" />} />
+        <Route path="/hld/:slug" element={<ModulePage course={hldCourse} basePath="/hld" examPath="/hld/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
