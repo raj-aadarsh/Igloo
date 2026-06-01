@@ -5,8 +5,12 @@ import { m2 } from './modules/m2-docker-practice';
 import { m3 } from './modules/m3-cicd';
 import { m4 } from './modules/m4-deployment-strategies';
 import { m5 } from './modules/m5-kubernetes';
+import { m6 } from './modules/m6-iac';
+import { m7 } from './modules/m7-cloud';
+import { m8 } from './modules/m8-monitoring';
+import { m9 } from './modules/m9-capstone';
 
-const modules: Module[] = [m0, m1, m2, m3, m4, m5].sort((a, b) => a.order - b.order);
+const modules: Module[] = [m0, m1, m2, m3, m4, m5, m6, m7, m8, m9].sort((a, b) => a.order - b.order);
 
 export const devopsCourse: Course = {
   id: 'course-devops',
@@ -18,12 +22,7 @@ export const devopsCourse: Course = {
 export const devopsTotalLessons = modules.reduce((acc, m) => acc + m.lessons.length, 0);
 
 /** Topics still being authored — shown as "coming soon" on the overview. */
-export const devopsPlannedTopics: string[] = [
-  'Infrastructure as Code (Terraform)',
-  'Cloud fundamentals (AWS)',
-  'Monitoring & observability',
-  'Capstone & interview recap',
-];
+export const devopsPlannedTopics: string[] = [];
 
 export function devopsAllQuestions() {
   return modules.flatMap((m) => m.quiz);

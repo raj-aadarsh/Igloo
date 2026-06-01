@@ -79,7 +79,8 @@ export type WidgetKey =
   | 'image-layers'
   | 'cicd-pipeline'
   | 'deployment-strategies'
-  | 'k8s-architecture';
+  | 'k8s-architecture'
+  | 'cloud-models';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
