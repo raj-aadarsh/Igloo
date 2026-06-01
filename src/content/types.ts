@@ -47,7 +47,8 @@ export type WidgetKey =
   // Core Java course widgets
   | 'java-playground'
   | 'jvm-pipeline'
-  | 'oop-pillars';
+  | 'oop-pillars'
+  | 'hashmap-internals';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

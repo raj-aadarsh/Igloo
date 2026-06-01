@@ -35,6 +35,7 @@ import { SqlPlayground } from './dbms/SqlPlayground';
 import { JavaPlayground } from './java/JavaPlayground';
 import { JvmPipeline } from './java/JvmPipeline';
 import { OopPillars } from './java/OopPillars';
+import { HashMapInternals } from './java/HashMapInternals';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -75,6 +76,7 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'java-playground': JavaPlayground,
   'jvm-pipeline': JvmPipeline,
   'oop-pillars': OopPillars,
+  'hashmap-internals': HashMapInternals,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {
