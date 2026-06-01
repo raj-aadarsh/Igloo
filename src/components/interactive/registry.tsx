@@ -61,6 +61,9 @@ import { ArchitectureCanvas } from './hld/ArchitectureCanvas';
 import { DevopsLifecycle } from './devops/DevopsLifecycle';
 import { ContainerVsVm } from './devops/ContainerVsVm';
 import { ImageLayers } from './devops/ImageLayers';
+import { CicdPipeline } from './devops/CicdPipeline';
+import { DeploymentStrategies } from './devops/DeploymentStrategies';
+import { K8sArchitecture } from './devops/K8sArchitecture';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -127,6 +130,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'devops-lifecycle': DevopsLifecycle,
   'container-vs-vm': ContainerVsVm,
   'image-layers': ImageLayers,
+  'cicd-pipeline': CicdPipeline,
+  'deployment-strategies': DeploymentStrategies,
+  'k8s-architecture': K8sArchitecture,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

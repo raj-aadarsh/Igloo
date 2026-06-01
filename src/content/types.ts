@@ -76,7 +76,10 @@ export type WidgetKey =
   // DevOps Essentials course widgets
   | 'devops-lifecycle'
   | 'container-vs-vm'
-  | 'image-layers';
+  | 'image-layers'
+  | 'cicd-pipeline'
+  | 'deployment-strategies'
+  | 'k8s-architecture';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
