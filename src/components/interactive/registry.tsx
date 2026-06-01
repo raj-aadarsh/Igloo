@@ -55,6 +55,8 @@ import { CapacityEstimator } from './hld/CapacityEstimator';
 import { ConsistentHashing } from './hld/ConsistentHashing';
 import { CachingDemo } from './hld/CachingDemo';
 import { CapTheorem } from './hld/CapTheorem';
+import { MessageQueue } from './hld/MessageQueue';
+import { CircuitBreaker } from './hld/CircuitBreaker';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -115,6 +117,8 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'consistent-hashing': ConsistentHashing,
   'caching-demo': CachingDemo,
   'cap-theorem': CapTheorem,
+  'message-queue': MessageQueue,
+  'circuit-breaker': CircuitBreaker,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

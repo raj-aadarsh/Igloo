@@ -6,8 +6,12 @@ import { m3 } from './modules/m3-caching';
 import { m4 } from './modules/m4-databases';
 import { m5 } from './modules/m5-replication-sharding';
 import { m6 } from './modules/m6-cap-consistency';
+import { m7 } from './modules/m7-messaging';
+import { m8 } from './modules/m8-networking-apis';
+import { m9 } from './modules/m9-microservices';
+import { m10 } from './modules/m10-reliability';
 
-const modules: Module[] = [m0, m1, m2, m3, m4, m5, m6].sort((a, b) => a.order - b.order);
+const modules: Module[] = [m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10].sort((a, b) => a.order - b.order);
 
 export const hldCourse: Course = {
   id: 'course-hld',
@@ -20,10 +24,6 @@ export const hldTotalLessons = modules.reduce((acc, m) => acc + m.lessons.length
 
 /** Topics still being authored — shown as "coming soon" on the overview. */
 export const hldPlannedTopics: string[] = [
-  'Messaging & async processing',
-  'Networking, APIs & API gateways',
-  'Microservices & architecture patterns',
-  'Reliability & observability',
   'Case study: URL shortener',
   'Case studies: Twitter feed & Chat',
   'Case studies: YouTube, Uber & more',

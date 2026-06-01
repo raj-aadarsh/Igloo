@@ -69,7 +69,9 @@ export type WidgetKey =
   | 'capacity-estimator'
   | 'consistent-hashing'
   | 'caching-demo'
-  | 'cap-theorem';
+  | 'cap-theorem'
+  | 'message-queue'
+  | 'circuit-breaker';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
