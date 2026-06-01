@@ -66,7 +66,10 @@ export type WidgetKey =
   | 'scaling-visualizer'
   | 'load-balancer-sim'
   | 'latency-numbers'
-  | 'capacity-estimator';
+  | 'capacity-estimator'
+  | 'consistent-hashing'
+  | 'caching-demo'
+  | 'cap-theorem';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

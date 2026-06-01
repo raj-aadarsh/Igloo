@@ -52,6 +52,9 @@ import { ScalingVisualizer } from './hld/ScalingVisualizer';
 import { LoadBalancerSim } from './hld/LoadBalancerSim';
 import { LatencyNumbers } from './hld/LatencyNumbers';
 import { CapacityEstimator } from './hld/CapacityEstimator';
+import { ConsistentHashing } from './hld/ConsistentHashing';
+import { CachingDemo } from './hld/CachingDemo';
+import { CapTheorem } from './hld/CapTheorem';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -109,6 +112,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'load-balancer-sim': LoadBalancerSim,
   'latency-numbers': LatencyNumbers,
   'capacity-estimator': CapacityEstimator,
+  'consistent-hashing': ConsistentHashing,
+  'caching-demo': CachingDemo,
+  'cap-theorem': CapTheorem,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {
