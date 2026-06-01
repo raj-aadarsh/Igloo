@@ -80,7 +80,7 @@ const EXAMPLES: Example[] = [
 
 public class Main {
     public static void main(String[] args) {
-        List<String> fruits = new ArrayList<>(List.of("apple", "banana", "apple"));
+        List<String> fruits = new ArrayList<>(Arrays.asList("apple", "banana", "apple"));
         System.out.println("List: " + fruits);
 
         Set<String> unique = new HashSet<>(fruits);
@@ -102,7 +102,7 @@ import java.util.stream.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> nums = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5, 6);
         int sumOfEvenSquares = nums.stream()
             .filter(n -> n % 2 == 0)   // keep evens
             .map(n -> n * n)           // square them

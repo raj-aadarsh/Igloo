@@ -36,6 +36,7 @@ import { JavaPlayground } from './java/JavaPlayground';
 import { JvmPipeline } from './java/JvmPipeline';
 import { OopPillars } from './java/OopPillars';
 import { HashMapInternals } from './java/HashMapInternals';
+import { ThreadLifecycle } from './java/ThreadLifecycle';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -77,6 +78,7 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'jvm-pipeline': JvmPipeline,
   'oop-pillars': OopPillars,
   'hashmap-internals': HashMapInternals,
+  'thread-lifecycle': ThreadLifecycle,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

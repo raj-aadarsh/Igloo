@@ -48,7 +48,8 @@ export type WidgetKey =
   | 'java-playground'
   | 'jvm-pipeline'
   | 'oop-pillars'
-  | 'hashmap-internals';
+  | 'hashmap-internals'
+  | 'thread-lifecycle';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
