@@ -43,7 +43,11 @@ export type WidgetKey =
   | 'relational-algebra'
   | 'transaction-states'
   | 'btree-index'
-  | 'sql-playground';
+  | 'sql-playground'
+  // Core Java course widgets
+  | 'java-playground'
+  | 'jvm-pipeline'
+  | 'oop-pillars';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

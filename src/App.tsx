@@ -7,6 +7,7 @@ import { ModulePage } from '@/features/course/ModulePage';
 import { osCourse, osAllQuestions, osPlannedTopics } from '@/content/course-os';
 import { cnCourse, cnAllQuestions, cnPlannedTopics } from '@/content/course-cn';
 import { dbmsCourse, dbmsAllQuestions, dbmsPlannedTopics } from '@/content/course-dbms';
+import { javaCourse, javaAllQuestions, javaPlannedTopics } from '@/content/course-java';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -95,6 +96,23 @@ export default function App() {
         />
         <Route path="/dbms/exam" element={<ExamPage pool={dbmsAllQuestions()} quizId="dbms-final-exam" reviewPath="/dbms" />} />
         <Route path="/dbms/:slug" element={<ModulePage course={dbmsCourse} basePath="/dbms" examPath="/dbms/exam" />} />
+        {/* Core Java course */}
+        <Route
+          path="/java"
+          element={
+            <CourseOverviewPage
+              course={javaCourse}
+              basePath="/java"
+              courseNumber={6}
+              accent="brand"
+              blurb="The Java that interviews and real work demand — OOP, collections, generics, streams, concurrency and the JVM, with a built-in playground that runs real Java in your browser."
+              extras={[{ to: '/java/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
+              comingSoon={javaPlannedTopics}
+            />
+          }
+        />
+        <Route path="/java/exam" element={<ExamPage pool={javaAllQuestions()} quizId="java-final-exam" reviewPath="/java" />} />
+        <Route path="/java/:slug" element={<ModulePage course={javaCourse} basePath="/java" examPath="/java/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

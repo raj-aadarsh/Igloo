@@ -13,6 +13,7 @@ import { dsaCourse, totalProblems as dsaProblems, totalSubCourses } from './cour
 import { osCourse, osTotalLessons } from './course-os';
 import { cnCourse, cnTotalLessons } from './course-cn';
 import { dbmsCourse, dbmsTotalLessons } from './course-dbms';
+import { javaCourse, javaTotalLessons } from './course-java';
 
 export interface CourseExtra {
   label: string;
@@ -99,6 +100,18 @@ export const courses: CourseMeta[] = [
     moduleCount: dbmsCourse.modules.length,
     lessonCount: dbmsTotalLessons,
     extras: [{ label: 'Final Exam', to: '/dbms/exam' }],
+  },
+  {
+    id: javaCourse.id,
+    title: javaCourse.title,
+    tagline: javaCourse.tagline,
+    icon: 'coffee',
+    accent: 'brand',
+    status: 'available',
+    overviewPath: '/java',
+    moduleCount: javaCourse.modules.length,
+    lessonCount: javaTotalLessons,
+    extras: [{ label: 'Final Exam', to: '/java/exam' }],
   },
   // ↓ Placeholder slot — signals Igloo is a general platform. Add real courses
   //   (any topic) by following the steps in the header comment.

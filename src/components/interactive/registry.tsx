@@ -32,6 +32,9 @@ import { RelationalAlgebra } from './dbms/RelationalAlgebra';
 import { TransactionStates } from './dbms/TransactionStates';
 import { BTreeIndex } from './dbms/BTreeIndex';
 import { SqlPlayground } from './dbms/SqlPlayground';
+import { JavaPlayground } from './java/JavaPlayground';
+import { JvmPipeline } from './java/JvmPipeline';
+import { OopPillars } from './java/OopPillars';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -69,6 +72,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'transaction-states': TransactionStates,
   'btree-index': BTreeIndex,
   'sql-playground': SqlPlayground,
+  'java-playground': JavaPlayground,
+  'jvm-pipeline': JvmPipeline,
+  'oop-pillars': OopPillars,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

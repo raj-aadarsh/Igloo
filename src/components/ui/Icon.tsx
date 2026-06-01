@@ -23,6 +23,7 @@ import {
   Bug,
   Repeat,
   ListTree,
+  Coffee,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -51,6 +52,7 @@ const registry: Record<string, LucideIcon> = {
   bug: Bug,
   repeat: Repeat,
   'list-tree': ListTree,
+  coffee: Coffee,
 };
 
 export function Icon({

@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Home, BookOpen, Map, Library, GraduationCap, ChevronDown, CheckCircle2, Circle, X,
-  Cpu, Heart, Code2, Swords, Network, Database,
+  Cpu, Heart, Code2, Swords, Network, Database, Coffee,
 } from 'lucide-react';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { useDsaProgress } from '@/features/progress/useDsaProgress';
@@ -10,6 +10,7 @@ import { course as aiCourse } from '@/content/course-ai';
 import { osCourse } from '@/content/course-os';
 import { cnCourse } from '@/content/course-cn';
 import { dbmsCourse } from '@/content/course-dbms';
+import { javaCourse } from '@/content/course-java';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
 import { cn } from '@/lib/cn';
@@ -50,6 +51,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { perModule: osModules } = useCourseProgress(osCourse);
   const { perModule: cnModules } = useCourseProgress(cnCourse);
   const { perModule: dbmsModules } = useCourseProgress(dbmsCourse);
+  const { perModule: javaModules } = useCourseProgress(javaCourse);
   const { perSub } = useDsaProgress();
   const loc = useLocation();
   const [aiOpen, setAiOpen] = useState(loc.pathname.startsWith('/learn') || loc.pathname.startsWith('/atlas') || loc.pathname === '/glossary' || loc.pathname === '/exam');
@@ -57,6 +59,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const [osOpen, setOsOpen] = useState(loc.pathname.startsWith('/os'));
   const [cnOpen, setCnOpen] = useState(loc.pathname.startsWith('/cn'));
   const [dbmsOpen, setDbmsOpen] = useState(loc.pathname.startsWith('/dbms'));
+  const [javaOpen, setJavaOpen] = useState(loc.pathname.startsWith('/java'));
 
   const modLink = (basePath: string) => ({ module, complete }: { module: { id: string; slug: string; icon: string; title: string }; complete: boolean }) => (
     <NavLink
@@ -172,6 +175,17 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             {dbmsModules.map(modLink('/dbms'))}
             <div className="my-1 ml-2 h-px bg-border/60" />
             <SubLink to="/dbms/exam" icon={GraduationCap}>Final Exam</SubLink>
+          </div>
+        )}
+
+        {/* Core Java course */}
+        <GroupButton icon={Coffee} label="Core Java" open={javaOpen} onClick={() => setJavaOpen((o) => !o)} />
+        {javaOpen && (
+          <div className="ml-2 space-y-0.5 border-l border-border pl-2" onClick={() => onNavigate?.()}>
+            <SubLink to="/java" end>Overview</SubLink>
+            {javaModules.map(modLink('/java'))}
+            <div className="my-1 ml-2 h-px bg-border/60" />
+            <SubLink to="/java/exam" icon={GraduationCap}>Final Exam</SubLink>
           </div>
         )}
 
