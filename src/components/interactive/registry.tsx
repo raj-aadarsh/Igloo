@@ -40,6 +40,11 @@ import { ThreadLifecycle } from './java/ThreadLifecycle';
 import { UmlRelationships } from './lld/UmlRelationships';
 import { SolidExplorer } from './lld/SolidExplorer';
 import { CouplingCohesion } from './lld/CouplingCohesion';
+import { PatternGallery } from './lld/PatternGallery';
+import { StrategyDemo } from './lld/StrategyDemo';
+import { ObserverDemo } from './lld/ObserverDemo';
+import { StateDemo } from './lld/StateDemo';
+import { LldPlayground } from './lld/LldPlayground';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -85,6 +90,11 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'uml-relationships': UmlRelationships,
   'solid-explorer': SolidExplorer,
   'coupling-cohesion': CouplingCohesion,
+  'pattern-gallery': PatternGallery,
+  'strategy-demo': StrategyDemo,
+  'observer-demo': ObserverDemo,
+  'state-demo': StateDemo,
+  'lld-playground': LldPlayground,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

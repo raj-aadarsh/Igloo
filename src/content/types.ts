@@ -53,7 +53,12 @@ export type WidgetKey =
   // Low-Level Design course widgets
   | 'uml-relationships'
   | 'solid-explorer'
-  | 'coupling-cohesion';
+  | 'coupling-cohesion'
+  | 'pattern-gallery'
+  | 'strategy-demo'
+  | 'observer-demo'
+  | 'state-demo'
+  | 'lld-playground';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
