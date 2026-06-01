@@ -58,7 +58,9 @@ export type WidgetKey =
   | 'strategy-demo'
   | 'observer-demo'
   | 'state-demo'
-  | 'lld-playground';
+  | 'lld-playground'
+  | 'noun-extraction'
+  | 'parking-lot-design';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

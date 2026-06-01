@@ -16,7 +16,7 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 | 04 | **Computer Networks** | How the internet works — OSI/TCP-IP layers, IP & live subnetting, TCP/UDP & the 3-way handshake, DNS/HTTP, TLS & security, and the "what happens when you type a URL" capstone — interactive throughout. |
 | 05 | **Database Management (DBMS)** | ER modeling, keys & constraints, functional dependencies & normalization (1NF–BCNF), relational algebra, transactions/ACID & serializability, indexing (B/B+ trees), and SQL — with a built-in **live SQL playground** that runs real queries in your browser. |
 | 06 | **Core Java Concepts** | The Java that interviews & real work demand — how the JVM runs code, OOP (the 4 pillars), the `equals`/`hashCode` contract, collections (incl. HashMap internals), generics, lambdas & streams, concurrency, and JVM memory/GC — with a built-in **Java playground** that compiles & runs real Java in your browser. |
-| 07 | **Low-Level Design (LLD)** | Turn requirements into clean, extensible class designs — UML & class relationships, SOLID, design patterns (creational/structural/behavioral), and full FAANG machine-coding case studies (Parking Lot, Elevator, BookMyShow, Splitwise & more) — interactive throughout, with runnable Java (in progress). |
+| 07 | **Low-Level Design (LLD)** | Turn requirements into clean, extensible class designs — UML & class relationships, SOLID, design patterns (creational/structural/behavioral), and full FAANG machine-coding case studies (Parking Lot, BookMyShow, Splitwise, Vending Machine, Rate Limiter & more) — interactive throughout, with runnable Java. |
 | 08 | **Coming soon** | More courses on the way. |
 
 ### 🥋 DSA Dojo (Course 02)

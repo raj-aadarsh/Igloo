@@ -45,6 +45,8 @@ import { StrategyDemo } from './lld/StrategyDemo';
 import { ObserverDemo } from './lld/ObserverDemo';
 import { StateDemo } from './lld/StateDemo';
 import { LldPlayground } from './lld/LldPlayground';
+import { NounExtraction } from './lld/NounExtraction';
+import { ParkingLotDesign } from './lld/ParkingLotDesign';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -95,6 +97,8 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'observer-demo': ObserverDemo,
   'state-demo': StateDemo,
   'lld-playground': LldPlayground,
+  'noun-extraction': NounExtraction,
+  'parking-lot-design': ParkingLotDesign,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {
