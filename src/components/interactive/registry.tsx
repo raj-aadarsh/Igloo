@@ -58,6 +58,9 @@ import { CapTheorem } from './hld/CapTheorem';
 import { MessageQueue } from './hld/MessageQueue';
 import { CircuitBreaker } from './hld/CircuitBreaker';
 import { ArchitectureCanvas } from './hld/ArchitectureCanvas';
+import { DevopsLifecycle } from './devops/DevopsLifecycle';
+import { ContainerVsVm } from './devops/ContainerVsVm';
+import { ImageLayers } from './devops/ImageLayers';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -121,6 +124,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'message-queue': MessageQueue,
   'circuit-breaker': CircuitBreaker,
   'architecture-canvas': ArchitectureCanvas,
+  'devops-lifecycle': DevopsLifecycle,
+  'container-vs-vm': ContainerVsVm,
+  'image-layers': ImageLayers,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

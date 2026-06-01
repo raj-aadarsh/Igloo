@@ -72,7 +72,11 @@ export type WidgetKey =
   | 'cap-theorem'
   | 'message-queue'
   | 'circuit-breaker'
-  | 'architecture-canvas';
+  | 'architecture-canvas'
+  // DevOps Essentials course widgets
+  | 'devops-lifecycle'
+  | 'container-vs-vm'
+  | 'image-layers';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

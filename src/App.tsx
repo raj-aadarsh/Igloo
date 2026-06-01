@@ -10,6 +10,7 @@ import { dbmsCourse, dbmsAllQuestions, dbmsPlannedTopics } from '@/content/cours
 import { javaCourse, javaAllQuestions, javaPlannedTopics } from '@/content/course-java';
 import { lldCourse, lldAllQuestions, lldPlannedTopics } from '@/content/course-lld';
 import { hldCourse, hldAllQuestions, hldPlannedTopics } from '@/content/course-hld';
+import { devopsCourse, devopsAllQuestions, devopsPlannedTopics } from '@/content/course-devops';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -149,6 +150,23 @@ export default function App() {
         />
         <Route path="/hld/exam" element={<ExamPage pool={hldAllQuestions()} quizId="hld-final-exam" reviewPath="/hld" />} />
         <Route path="/hld/:slug" element={<ModulePage course={hldCourse} basePath="/hld" examPath="/hld/exam" />} />
+        {/* DevOps Essentials course */}
+        <Route
+          path="/devops"
+          element={
+            <CourseOverviewPage
+              course={devopsCourse}
+              basePath="/devops"
+              courseNumber={9}
+              accent="brand"
+              blurb="Ship faster and safer — the DevOps lifecycle, Docker & containers, CI/CD, Kubernetes, infrastructure as code, cloud and observability — visual and interview-focused throughout."
+              extras={[{ to: '/devops/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
+              comingSoon={devopsPlannedTopics}
+            />
+          }
+        />
+        <Route path="/devops/exam" element={<ExamPage pool={devopsAllQuestions()} quizId="devops-final-exam" reviewPath="/devops" />} />
+        <Route path="/devops/:slug" element={<ModulePage course={devopsCourse} basePath="/devops" examPath="/devops/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

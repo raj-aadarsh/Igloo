@@ -26,6 +26,7 @@ import {
   Coffee,
   DraftingCompass,
   Server,
+  Infinity as InfinityIcon,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -57,6 +58,7 @@ const registry: Record<string, LucideIcon> = {
   coffee: Coffee,
   'drafting-compass': DraftingCompass,
   server: Server,
+  infinity: InfinityIcon,
 };
 
 export function Icon({
