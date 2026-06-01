@@ -70,6 +70,7 @@ import { GitBranching } from './git/GitBranching';
 import { MergeVsRebase } from './git/MergeVsRebase';
 import { StarBuilder } from './hr/StarBuilder';
 import { QuestionBank } from './hr/QuestionBank';
+import { CompetencyMatrix } from './hr/CompetencyMatrix';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -145,6 +146,7 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'merge-vs-rebase': MergeVsRebase,
   'star-builder': StarBuilder,
   'question-bank': QuestionBank,
+  'competency-matrix': CompetencyMatrix,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

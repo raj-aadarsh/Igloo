@@ -23,7 +23,7 @@ Igloo is an interactive learning platform with hands-on demos and pressure-free 
 | 08 | **High-Level / System Design** | Architect systems that scale to millions — scaling & load balancing, caching & CDNs, SQL vs NoSQL, replication, sharding & consistent hashing, CAP & consistency, messaging, microservices, and full FAANG case studies (URL shortener, Twitter, Chat, YouTube, Uber) — interactive throughout. |
 | 09 | **DevOps Essentials** | Ship faster & safer — the DevOps lifecycle, Docker & containers, CI/CD pipelines, deployment strategies, Kubernetes, Infrastructure as Code, cloud fundamentals, and monitoring/observability — visual and interview-focused throughout. |
 | 10 | **Git & GitHub** | The version control you’ll use every day — commits & the three areas, branching & merging, merge vs rebase, GitHub collaboration (clone/push/pull, PRs, forks) and undoing mistakes — short, visual & interactive. |
-| 11 | **Behavioral / HR Prep** | Win the round that decides the offer — the STAR method, the common questions (and what they’re *really* asking), building your story bank, confident delivery, and the questions to ask them — interactive throughout (in progress). |
+| 11 | **Behavioral / HR Prep** | Win the round that decides the offer — the STAR method, the common questions (and what they’re *really* asking), building your story bank, confident delivery, and the questions to ask them — interactive throughout. |
 
 ### 🥋 DSA Dojo (Course 02)
 

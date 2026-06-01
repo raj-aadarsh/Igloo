@@ -87,7 +87,8 @@ export type WidgetKey =
   | 'merge-vs-rebase'
   // Behavioral / HR course widgets
   | 'star-builder'
-  | 'question-bank';
+  | 'question-bank'
+  | 'competency-matrix';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
