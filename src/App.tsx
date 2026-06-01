@@ -12,6 +12,7 @@ import { lldCourse, lldAllQuestions, lldPlannedTopics } from '@/content/course-l
 import { hldCourse, hldAllQuestions, hldPlannedTopics } from '@/content/course-hld';
 import { devopsCourse, devopsAllQuestions, devopsPlannedTopics } from '@/content/course-devops';
 import { gitCourse, gitAllQuestions, gitPlannedTopics } from '@/content/course-git';
+import { hrCourse, hrAllQuestions, hrPlannedTopics } from '@/content/course-hr';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -185,6 +186,23 @@ export default function App() {
         />
         <Route path="/git/exam" element={<ExamPage pool={gitAllQuestions()} quizId="git-final-exam" reviewPath="/git" />} />
         <Route path="/git/:slug" element={<ModulePage course={gitCourse} basePath="/git" examPath="/git/exam" />} />
+        {/* Behavioral / HR course */}
+        <Route
+          path="/hr"
+          element={
+            <CourseOverviewPage
+              course={hrCourse}
+              basePath="/hr"
+              courseNumber={11}
+              accent="brand"
+              blurb="The round that decides the offer — the STAR method, the common questions (and what they’re really asking), your story bank, and confident delivery."
+              extras={[{ to: '/hr/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
+              comingSoon={hrPlannedTopics}
+            />
+          }
+        />
+        <Route path="/hr/exam" element={<ExamPage pool={hrAllQuestions()} quizId="hr-final-exam" reviewPath="/hr" />} />
+        <Route path="/hr/:slug" element={<ModulePage course={hrCourse} basePath="/hr" examPath="/hr/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

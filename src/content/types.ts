@@ -84,7 +84,10 @@ export type WidgetKey =
   // Git & GitHub course widgets
   | 'git-areas'
   | 'git-branching'
-  | 'merge-vs-rebase';
+  | 'merge-vs-rebase'
+  // Behavioral / HR course widgets
+  | 'star-builder'
+  | 'question-bank';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

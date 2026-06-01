@@ -28,6 +28,7 @@ import {
   Server,
   Infinity as InfinityIcon,
   GitBranch,
+  Handshake,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -61,6 +62,7 @@ const registry: Record<string, LucideIcon> = {
   server: Server,
   infinity: InfinityIcon,
   'git-branch': GitBranch,
+  handshake: Handshake,
 };
 
 export function Icon({

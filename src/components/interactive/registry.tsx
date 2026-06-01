@@ -68,6 +68,8 @@ import { CloudModels } from './devops/CloudModels';
 import { GitAreas } from './git/GitAreas';
 import { GitBranching } from './git/GitBranching';
 import { MergeVsRebase } from './git/MergeVsRebase';
+import { StarBuilder } from './hr/StarBuilder';
+import { QuestionBank } from './hr/QuestionBank';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -141,6 +143,8 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'git-areas': GitAreas,
   'git-branching': GitBranching,
   'merge-vs-rebase': MergeVsRebase,
+  'star-builder': StarBuilder,
+  'question-bank': QuestionBank,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {
