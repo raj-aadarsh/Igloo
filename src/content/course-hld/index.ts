@@ -10,8 +10,12 @@ import { m7 } from './modules/m7-messaging';
 import { m8 } from './modules/m8-networking-apis';
 import { m9 } from './modules/m9-microservices';
 import { m10 } from './modules/m10-reliability';
+import { m11 } from './modules/m11-url-shortener';
+import { m12 } from './modules/m12-feed-and-chat';
+import { m13 } from './modules/m13-rapid-designs';
+import { m14 } from './modules/m14-capstone';
 
-const modules: Module[] = [m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10].sort((a, b) => a.order - b.order);
+const modules: Module[] = [m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14].sort((a, b) => a.order - b.order);
 
 export const hldCourse: Course = {
   id: 'course-hld',
@@ -23,12 +27,7 @@ export const hldCourse: Course = {
 export const hldTotalLessons = modules.reduce((acc, m) => acc + m.lessons.length, 0);
 
 /** Topics still being authored — shown as "coming soon" on the overview. */
-export const hldPlannedTopics: string[] = [
-  'Case study: URL shortener',
-  'Case studies: Twitter feed & Chat',
-  'Case studies: YouTube, Uber & more',
-  'Capstone & interview recap',
-];
+export const hldPlannedTopics: string[] = [];
 
 export function hldAllQuestions() {
   return modules.flatMap((m) => m.quiz);

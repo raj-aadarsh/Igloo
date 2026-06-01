@@ -71,7 +71,8 @@ export type WidgetKey =
   | 'caching-demo'
   | 'cap-theorem'
   | 'message-queue'
-  | 'circuit-breaker';
+  | 'circuit-breaker'
+  | 'architecture-canvas';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
