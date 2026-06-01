@@ -8,6 +8,7 @@ import { osCourse, osAllQuestions, osPlannedTopics } from '@/content/course-os';
 import { cnCourse, cnAllQuestions, cnPlannedTopics } from '@/content/course-cn';
 import { dbmsCourse, dbmsAllQuestions, dbmsPlannedTopics } from '@/content/course-dbms';
 import { javaCourse, javaAllQuestions, javaPlannedTopics } from '@/content/course-java';
+import { lldCourse, lldAllQuestions, lldPlannedTopics } from '@/content/course-lld';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -113,6 +114,23 @@ export default function App() {
         />
         <Route path="/java/exam" element={<ExamPage pool={javaAllQuestions()} quizId="java-final-exam" reviewPath="/java" />} />
         <Route path="/java/:slug" element={<ModulePage course={javaCourse} basePath="/java" examPath="/java/exam" />} />
+        {/* Low-Level Design course */}
+        <Route
+          path="/lld"
+          element={
+            <CourseOverviewPage
+              course={lldCourse}
+              basePath="/lld"
+              courseNumber={7}
+              accent="brand"
+              blurb="Turn requirements into clean, extensible class designs — UML, SOLID, design patterns, and full FAANG machine-coding case studies, interactive throughout."
+              extras={[{ to: '/lld/exam', title: 'Final Exam', desc: 'Mixed questions · unlimited tries', icon: GraduationCap }]}
+              comingSoon={lldPlannedTopics}
+            />
+          }
+        />
+        <Route path="/lld/exam" element={<ExamPage pool={lldAllQuestions()} quizId="lld-final-exam" reviewPath="/lld" />} />
+        <Route path="/lld/:slug" element={<ModulePage course={lldCourse} basePath="/lld" examPath="/lld/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

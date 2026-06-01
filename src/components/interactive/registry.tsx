@@ -37,6 +37,9 @@ import { JvmPipeline } from './java/JvmPipeline';
 import { OopPillars } from './java/OopPillars';
 import { HashMapInternals } from './java/HashMapInternals';
 import { ThreadLifecycle } from './java/ThreadLifecycle';
+import { UmlRelationships } from './lld/UmlRelationships';
+import { SolidExplorer } from './lld/SolidExplorer';
+import { CouplingCohesion } from './lld/CouplingCohesion';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -79,6 +82,9 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'oop-pillars': OopPillars,
   'hashmap-internals': HashMapInternals,
   'thread-lifecycle': ThreadLifecycle,
+  'uml-relationships': UmlRelationships,
+  'solid-explorer': SolidExplorer,
+  'coupling-cohesion': CouplingCohesion,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

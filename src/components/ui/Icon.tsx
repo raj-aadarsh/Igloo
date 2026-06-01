@@ -24,6 +24,7 @@ import {
   Repeat,
   ListTree,
   Coffee,
+  DraftingCompass,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -53,6 +54,7 @@ const registry: Record<string, LucideIcon> = {
   repeat: Repeat,
   'list-tree': ListTree,
   coffee: Coffee,
+  'drafting-compass': DraftingCompass,
 };
 
 export function Icon({

@@ -49,7 +49,11 @@ export type WidgetKey =
   | 'jvm-pipeline'
   | 'oop-pillars'
   | 'hashmap-internals'
-  | 'thread-lifecycle';
+  | 'thread-lifecycle'
+  // Low-Level Design course widgets
+  | 'uml-relationships'
+  | 'solid-explorer'
+  | 'coupling-cohesion';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 
