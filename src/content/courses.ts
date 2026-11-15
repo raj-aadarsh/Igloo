@@ -19,6 +19,7 @@ import { hldCourse, hldTotalLessons } from './course-hld';
 import { devopsCourse, devopsTotalLessons } from './course-devops';
 import { gitCourse, gitTotalLessons } from './course-git';
 import { hrCourse, hrTotalLessons } from './course-hr';
+import { androidCourse, androidTotalLessons } from './course-android';
 
 export interface CourseExtra {
   label: string;
@@ -177,6 +178,18 @@ export const courses: CourseMeta[] = [
     moduleCount: hrCourse.modules.length,
     lessonCount: hrTotalLessons,
     extras: [{ label: 'Final Exam', to: '/hr/exam' }],
+  },
+  {
+    id: androidCourse.id,
+    title: androidCourse.title,
+    tagline: androidCourse.tagline,
+    icon: 'smartphone',
+    accent: 'brand',
+    status: 'available',
+    overviewPath: '/android',
+    moduleCount: androidCourse.modules.length,
+    lessonCount: androidTotalLessons,
+    extras: [{ label: 'Final Exam', to: '/android/exam' }],
   },
   // ↓ Placeholder slot — signals Igloo is a general platform. Add real courses
   //   (any topic) by following the steps in the header comment.

@@ -88,7 +88,40 @@ export type WidgetKey =
   // Behavioral / HR course widgets
   | 'star-builder'
   | 'question-bank'
-  | 'competency-matrix';
+  | 'competency-matrix'
+  // Android Framework course widgets
+  | 'android-stack'
+  | 'android-boot'
+  | 'android-app-process'
+  | 'handler-looper'
+  | 'activity-lifecycle'
+  | 'launch-modes'
+  | 'intent-matching'
+  | 'binder-ipc'
+  | 'jni-hal'
+  | 'oom-ladder'
+  | 'input-pipeline'
+  | 'touch-dispatch'
+  | 'multi-user'
+  | 'crash-signatures'
+  | 'avc-decoder'
+  | 'package-record'
+  | 'graphics-pipeline'
+  | 'frame-timeline'
+  | 'aosp-tree'
+  | 'partition-map'
+  | 'memory-metrics'
+  | 'props-settings'
+  | 'patch-port'
+  | 'log-java-crashes'
+  | 'log-anr-freezes'
+  | 'log-native-crashes'
+  | 'log-kernel-boot'
+  | 'log-memory-issues'
+  | 'log-ui-issues'
+  | 'log-security-issues'
+  | 'log-xts-issues'
+  | 'log-buffers';
 
 export type CalloutVariant = 'info' | 'tip' | 'warning' | 'key' | 'history';
 

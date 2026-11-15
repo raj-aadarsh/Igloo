@@ -71,6 +71,38 @@ import { MergeVsRebase } from './git/MergeVsRebase';
 import { StarBuilder } from './hr/StarBuilder';
 import { QuestionBank } from './hr/QuestionBank';
 import { CompetencyMatrix } from './hr/CompetencyMatrix';
+import { AndroidStack } from './android/AndroidStack';
+import { BootSequenceFlow } from './android/BootSequenceFlow';
+import { AppProcessFlow } from './android/AppProcessFlow';
+import { HandlerLooper } from './android/HandlerLooper';
+import { ActivityLifecycle } from './android/ActivityLifecycle';
+import { LaunchModes } from './android/LaunchModes';
+import { IntentMatching } from './android/IntentMatching';
+import { BinderIpc } from './android/BinderIpc';
+import { JniHalFlow } from './android/JniHalFlow';
+import { OomLadder } from './android/OomLadder';
+import { InputPipelineFlow } from './android/InputPipelineFlow';
+import { TouchDispatch } from './android/TouchDispatch';
+import { MultiUserViz } from './android/MultiUserViz';
+import { CrashSignatures } from './android/CrashSignatures';
+import { AvcDecoder } from './android/AvcDecoder';
+import { PackageRecord } from './android/PackageRecord';
+import { GraphicsPipelineFlow } from './android/GraphicsPipelineFlow';
+import { FrameTimeline } from './android/FrameTimeline';
+import { AospTree } from './android/AospTree';
+import { PartitionMap } from './android/PartitionMap';
+import { MemoryMetrics } from './android/MemoryMetrics';
+import { PropsSettings } from './android/PropsSettings';
+import { PatchPortFlow } from './android/PatchPortFlow';
+import { JavaCrashLogs } from './android/JavaCrashLogs';
+import { AnrFreezeLogs } from './android/AnrFreezeLogs';
+import { NativeCrashLogs } from './android/NativeCrashLogs';
+import { KernelBootLogs } from './android/KernelBootLogs';
+import { MemoryIssueLogs } from './android/MemoryIssueLogs';
+import { UiIssueLogs } from './android/UiIssueLogs';
+import { SecurityIssueLogs } from './android/SecurityIssueLogs';
+import { XtsIssueLogs } from './android/XtsIssueLogs';
+import { LogBuffers } from './android/LogBuffers';
 
 export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'nested-circles': NestedCircles,
@@ -147,6 +179,38 @@ export const widgetRegistry: Record<WidgetKey, () => JSX.Element> = {
   'star-builder': StarBuilder,
   'question-bank': QuestionBank,
   'competency-matrix': CompetencyMatrix,
+  'android-stack': AndroidStack,
+  'android-boot': BootSequenceFlow,
+  'android-app-process': AppProcessFlow,
+  'handler-looper': HandlerLooper,
+  'activity-lifecycle': ActivityLifecycle,
+  'launch-modes': LaunchModes,
+  'intent-matching': IntentMatching,
+  'binder-ipc': BinderIpc,
+  'jni-hal': JniHalFlow,
+  'oom-ladder': OomLadder,
+  'input-pipeline': InputPipelineFlow,
+  'touch-dispatch': TouchDispatch,
+  'multi-user': MultiUserViz,
+  'crash-signatures': CrashSignatures,
+  'avc-decoder': AvcDecoder,
+  'package-record': PackageRecord,
+  'graphics-pipeline': GraphicsPipelineFlow,
+  'frame-timeline': FrameTimeline,
+  'aosp-tree': AospTree,
+  'partition-map': PartitionMap,
+  'memory-metrics': MemoryMetrics,
+  'props-settings': PropsSettings,
+  'patch-port': PatchPortFlow,
+  'log-java-crashes': JavaCrashLogs,
+  'log-anr-freezes': AnrFreezeLogs,
+  'log-native-crashes': NativeCrashLogs,
+  'log-kernel-boot': KernelBootLogs,
+  'log-memory-issues': MemoryIssueLogs,
+  'log-ui-issues': UiIssueLogs,
+  'log-security-issues': SecurityIssueLogs,
+  'log-xts-issues': XtsIssueLogs,
+  'log-buffers': LogBuffers,
 };
 
 export function Widget({ name }: { name: WidgetKey }) {

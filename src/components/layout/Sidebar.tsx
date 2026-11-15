@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Home, BookOpen, Map, Library, GraduationCap, ChevronDown, CheckCircle2, Circle, X,
-  Cpu, Heart, Code2, Swords, Network, Database, Coffee, DraftingCompass, Server, Infinity as InfinityIcon, GitBranch, Handshake,
+  Cpu, Heart, Code2, Swords, Network, Database, Coffee, DraftingCompass, Server, Infinity as InfinityIcon, GitBranch, Handshake, Smartphone,
 } from 'lucide-react';
 import { useCourseProgress } from '@/features/progress/useCourseProgress';
 import { useDsaProgress } from '@/features/progress/useDsaProgress';
@@ -16,6 +16,7 @@ import { hldCourse } from '@/content/course-hld';
 import { devopsCourse } from '@/content/course-devops';
 import { gitCourse } from '@/content/course-git';
 import { hrCourse } from '@/content/course-hr';
+import { androidCourse, androidPhases } from '@/content/course-android';
 import { Icon } from '@/components/ui/Icon';
 import { Logo } from '@/components/ui/Logo';
 import { cn } from '@/lib/cn';
@@ -62,6 +63,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { perModule: devopsModules } = useCourseProgress(devopsCourse);
   const { perModule: gitModules } = useCourseProgress(gitCourse);
   const { perModule: hrModules } = useCourseProgress(hrCourse);
+  const { perModule: androidModules } = useCourseProgress(androidCourse);
   const { perSub } = useDsaProgress();
   const loc = useLocation();
   const [aiOpen, setAiOpen] = useState(loc.pathname.startsWith('/learn') || loc.pathname.startsWith('/atlas') || loc.pathname === '/glossary' || loc.pathname === '/exam');
@@ -75,6 +77,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const [devopsOpen, setDevopsOpen] = useState(loc.pathname.startsWith('/devops'));
   const [gitOpen, setGitOpen] = useState(loc.pathname.startsWith('/git'));
   const [hrOpen, setHrOpen] = useState(loc.pathname.startsWith('/hr'));
+  const [androidOpen, setAndroidOpen] = useState(loc.pathname.startsWith('/android'));
 
   const modLink = (basePath: string) => ({ module, complete }: { module: { id: string; slug: string; icon: string; title: string }; complete: boolean }) => (
     <NavLink
@@ -256,6 +259,27 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             {hrModules.map(modLink('/hr'))}
             <div className="my-1 ml-2 h-px bg-border/60" />
             <SubLink to="/hr/exam" icon={GraduationCap}>Final Exam</SubLink>
+          </div>
+        )}
+
+        {/* Android Framework course */}
+        <GroupButton icon={Smartphone} label="Android Framework" open={androidOpen} onClick={() => setAndroidOpen((o) => !o)} />
+        {androidOpen && (
+          <div className="ml-2 space-y-0.5 border-l border-border pl-2" onClick={() => onNavigate?.()}>
+            <SubLink to="/android" end>Overview</SubLink>
+            {androidPhases.map((phase) => {
+              return (
+                <div key={phase.id}>
+                  <div className="mt-2 px-2.5 pb-0.5 text-[10px] font-bold uppercase tracking-wider text-muted/70">{phase.short}</div>
+                  {phase.moduleIds.map((id) => {
+                    const pm = androidModules.find((m) => m.module.id === id);
+                    return pm ? modLink('/android')(pm) : null;
+                  })}
+                </div>
+              );
+            })}
+            <div className="my-1 ml-2 h-px bg-border/60" />
+            <SubLink to="/android/exam" icon={GraduationCap}>Final Exam</SubLink>
           </div>
         )}
 

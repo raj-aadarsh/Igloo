@@ -13,6 +13,8 @@ import { hldCourse, hldAllQuestions, hldPlannedTopics } from '@/content/course-h
 import { devopsCourse, devopsAllQuestions, devopsPlannedTopics } from '@/content/course-devops';
 import { gitCourse, gitAllQuestions, gitPlannedTopics } from '@/content/course-git';
 import { hrCourse, hrAllQuestions, hrPlannedTopics } from '@/content/course-hr';
+import { androidCourse, androidAllQuestions } from '@/content/course-android';
+import { AndroidOverviewPage } from '@/features/android/AndroidOverviewPage';
 import { GlossaryPage } from '@/features/glossary/GlossaryPage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { AtlasHome } from '@/features/atlas/AtlasHome';
@@ -203,6 +205,10 @@ export default function App() {
         />
         <Route path="/hr/exam" element={<ExamPage pool={hrAllQuestions()} quizId="hr-final-exam" reviewPath="/hr" />} />
         <Route path="/hr/:slug" element={<ModulePage course={hrCourse} basePath="/hr" examPath="/hr/exam" />} />
+        {/* Android Framework course */}
+        <Route path="/android" element={<AndroidOverviewPage />} />
+        <Route path="/android/exam" element={<ExamPage pool={androidAllQuestions()} quizId="android-final-exam" reviewPath="/android" />} />
+        <Route path="/android/:slug" element={<ModulePage course={androidCourse} basePath="/android" examPath="/android/exam" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
